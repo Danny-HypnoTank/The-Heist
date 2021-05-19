@@ -26,6 +26,7 @@ public class GameControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (pictures[0].rotation.z == 0 &&
             pictures[1].rotation.z == 0 &&
             pictures[2].rotation.z == 0 &&
@@ -35,10 +36,13 @@ public class GameControl : MonoBehaviour
             winText.SetActive(true);
         }
 
+        
+
         if (youWin == true)
         {
             objective.SetActive(false);
         }
-        
+       
+
     }
 }
