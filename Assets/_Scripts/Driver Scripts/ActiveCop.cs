@@ -52,6 +52,9 @@ public class ActiveCop : MonoBehaviour
 
     private void EnemyRotation()
     {
-        //Use animator to make this work.
+        // Animation
+        Vector2 dir = waypoints[cur].position - transform.position;
+        GetComponent<Animator>().SetFloat("DirX", dir.x);
+        GetComponent<Animator>().SetFloat("DirY", dir.y);
     }
 }
