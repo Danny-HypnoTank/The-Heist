@@ -123,7 +123,15 @@ public class PlayerPacManTest : MonoBehaviour
             heistTracker.heistersEscape = true;
             heistTracker.HeistConditions();
         }
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Detector")
+        {
+            collision.gameObject.GetComponentInParent<ActiveCop>().playerSpotted = true;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collider)
+    {
+        if (collider.gameObject.tag == "Enemy")
         {
             if (boosting == true)
             {
@@ -135,10 +143,7 @@ public class PlayerPacManTest : MonoBehaviour
                 heistTracker.HeistConditions();
             }
         }
-    }
 
-    private void OnCollisionEnter2D(Collision2D collider)
-    {
         if (collider.gameObject.tag == "Wall")
         {
             if (boosting == true)
