@@ -32,7 +32,8 @@ public class MainMenu : MonoBehaviour
     private Text heistTakeText;
     [SerializeField]
     private Text heistExpenseText;
-    private int levelToLoad;
+    private int DriverLevelToLoad;
+    private int HackerLevelToLoad;
 
     public void Start()
     {
@@ -65,7 +66,8 @@ public class MainMenu : MonoBehaviour
         heistName.text = "Test Heist";
         //heist discription
         heistDiscription.text = "Heist Discription text testing";
-        levelToLoad = 1;
+        DriverLevelToLoad = 1;
+        HackerLevelToLoad = 2;
         heistContractUI.SetActive(true);
     }
     public void Level2Button()
@@ -74,7 +76,8 @@ public class MainMenu : MonoBehaviour
         heistName.text = "Test Heist";
         //heist discription
         heistDiscription.text = "Heist Discription text testing";
-        levelToLoad = 1;
+        DriverLevelToLoad = 1;
+        HackerLevelToLoad = 3;
         heistContractUI.SetActive(true);
     }
     public void Level3Button()
@@ -83,16 +86,17 @@ public class MainMenu : MonoBehaviour
         heistName.text = "Test Heist";
         //heist discription
         heistDiscription.text = "Heist Discription text testing";
-        levelToLoad = 1;
+        DriverLevelToLoad = 1;
+        HackerLevelToLoad = 4;
         heistContractUI.SetActive(true);
     }
     public void DriverButton()
     {
-        SceneManager.LoadScene(levelToLoad);
+        SceneManager.LoadScene(DriverLevelToLoad);
     }
     public void HackerButton()
     {
-        SceneManager.LoadScene(levelToLoad);
+        SceneManager.LoadScene(HackerLevelToLoad);
     }
     public void CloseHeist()
     {
