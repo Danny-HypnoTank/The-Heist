@@ -14,9 +14,14 @@ public class MoveSystem : MonoBehaviour
 
     private Vector3 resetPos;
 
+    public GameObject objective;
+    public GameObject endScreen;
+
     void Start()
     {
         resetPos = this.transform.localPosition;
+        objective.SetActive(true);
+        endScreen.SetActive(false);
     }
 
    
@@ -62,6 +67,8 @@ public class MoveSystem : MonoBehaviour
         {
             this.transform.localPosition = new Vector3(correctForm.transform.localPosition.x, correctForm.transform.localPosition.y, correctForm.transform.localPosition.z);
             finish = true;
+            objective.SetActive(false);
+            endScreen.SetActive(true);
         }
         else
         {

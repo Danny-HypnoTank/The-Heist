@@ -34,9 +34,9 @@ public class ButtonPress : MonoBehaviour {
             if (playerCode==correctCode)
             {
                 Debug.Log("Correct!");
-               // endScreen.gameObject.SetActive(true);
+               endScreen.gameObject.SetActive(true);
                // timer.gameObject.SetActive(false);
-               // objective.gameObject.SetActive(false);
+               objective.gameObject.SetActive(false);
             }
 
             else
