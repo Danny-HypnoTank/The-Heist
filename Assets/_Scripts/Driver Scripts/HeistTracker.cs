@@ -6,6 +6,20 @@ using UnityEngine.SceneManagement;
 
 public class HeistTracker : MonoBehaviour
 {
+    #region Money Collection Variables
+    [SerializeField]
+    private Text moneyText;
+    private int money;
+    private int totalTake = 0;
+    private int takeDelay = 1;
+    private float Timer;
+    #endregion
+
+    #region UI References
+    [SerializeField]
+    private GameObject boostButton;
+    private bool boostenabled = false;
+
     [SerializeField]
     private Text objectiveText;
     [SerializeField]
@@ -13,21 +27,11 @@ public class HeistTracker : MonoBehaviour
     [SerializeField]
     private GameObject heistTimerGB;
 
- [SerializeField]
-    private Text moneyText;
-    private int money;
-    private int totalTake = 0;
-    private int takeDelay = 1;
-    private float Timer;
-
-    [SerializeField]
-    private GameObject boostButton;
-    private bool boostenabled = false;
-
     [SerializeField]
     private GameObject pauseUI;
     [SerializeField]
     private GameObject quitUI;
+
     [SerializeField]
     private GameObject loseUI;
     [SerializeField]
@@ -36,6 +40,7 @@ public class HeistTracker : MonoBehaviour
     private Text loseOutGoingsText;
     [SerializeField]
     private Text loseTotalTakeText;
+
     [SerializeField]
     private GameObject winUI;
     [SerializeField]
@@ -44,31 +49,34 @@ public class HeistTracker : MonoBehaviour
     private Text winOutGoingsText;
     [SerializeField]
     private Text winTotalTakeText;
+    #endregion
 
+    #region GameObject References for Objectives
     [SerializeField]
     private GameObject[] objectives;
     [SerializeField]
     private GameObject heistLocation;
     [SerializeField]
     private GameObject[] exits;
+    #endregion
 
     private float heistTime;
     private float pickupTime;
 
+    #region Objective Conditions
     public bool droppingOff = false;
     private bool dropOffComplete = false;
     public bool heistInProgress = false;
-
     public bool pickupRequired = false;
     public bool pickedUpHeisters = false;
     public bool heistersCaught = false;
-
     public bool heistersEscape = false;
 
     public bool EnabledCops = false;
     private int exitToActivate;
+    #endregion
 
-
+    #region On Level Start Functions
     private void Awake()
     {
         heistTime = 30;
@@ -92,7 +100,9 @@ public class HeistTracker : MonoBehaviour
         winUI.SetActive(false);
         heistTimerGB.SetActive(false);
     }
+    #endregion
 
+    #region Mission Objective functions and Rules
     private void Update()
     {
         if (heistersCaught == false && heistersEscape == false)
@@ -238,9 +248,9 @@ public class HeistTracker : MonoBehaviour
             winTotalTakeText.text = "Total Take: " + (totalTake - 10);
         }
     }
+    #endregion
 
-
-
+    #region Enablers for abilities and Timers
     IEnumerator DropOffTimer()
     {
         yield return new WaitForSeconds(3f);
@@ -273,6 +283,27 @@ public class HeistTracker : MonoBehaviour
     {
         Time.timeScale = 1;
     }
+    #endregion
+
+    #region In-Game UI Buttons
+    //Pause Menu Functionality needed
+    //Pause button
+    public void PauseButton()
+    {
+        PauseGame();
+        pauseUI.SetActive(true);
+    }
+    //Options
+    public void OptionsButton()
+    {
+        //Open Options Panel
+    }
+    //Close Pause
+    public void ClosePauseMenu()
+    {
+        pauseUI.SetActive(false);
+        ResumeGame();
+    }
 
     //Buttons Required
     //Continue to breakdown
@@ -297,23 +328,6 @@ public class HeistTracker : MonoBehaviour
     {
         quitUI.SetActive(false);
     }
+    #endregion
 
-    //Pause Menu Functionality needed
-    //Pause button
-    public void PauseButton()
-    {
-        PauseGame();
-        pauseUI.SetActive(true);
-    }
-    //Options
-    public void OptionsButton()
-    {
-        //Open Options Panel
-    }
-    //Close Pause
-    public void ClosePauseMenu()
-    {
-        pauseUI.SetActive(false);
-        ResumeGame();
-    }
 }

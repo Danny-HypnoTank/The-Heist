@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    //UI Panels
+    #region UI Menu Variables
     [SerializeField]
     private GameObject mainMenuUI;
     [SerializeField]
@@ -23,7 +23,9 @@ public class MainMenu : MonoBehaviour
     private GameObject optionsUI;
     [SerializeField]
     private GameObject quitUI;
+    #endregion
 
+    #region Heist Select Menu Variables
     [SerializeField]
     private GameObject heistContractUI;
     [SerializeField]
@@ -36,7 +38,9 @@ public class MainMenu : MonoBehaviour
     private Text heistExpenseText;
     private int DriverLevelToLoad;
     private int HackerLevelToLoad;
+    #endregion
 
+    #region Scene Start
     public void Start()
     {
         mainMenuUI.SetActive(true);
@@ -49,7 +53,9 @@ public class MainMenu : MonoBehaviour
         optionsUI.SetActive(false);
         quitUI.SetActive(false);
     }
+    #endregion
 
+    #region Menu Transition Buttons
     public void StartButton()
     {
         mainMenuUI.SetActive(false);
@@ -76,6 +82,47 @@ public class MainMenu : MonoBehaviour
         quitUI.SetActive(false);
     }
 
+    public void CarCUButton()
+    {
+        mainMenuUI.SetActive(false);
+        hubUI.SetActive(false);
+        heistUI.SetActive(false);
+        heistContractUI.SetActive(false);
+        carUI.SetActive(true);
+        crewUI.SetActive(false);
+        hackerUI.SetActive(false);
+        optionsUI.SetActive(false);
+        quitUI.SetActive(false);
+    }
+
+    public void CrewCUButton()
+    {
+        mainMenuUI.SetActive(false);
+        hubUI.SetActive(false);
+        heistUI.SetActive(false);
+        heistContractUI.SetActive(false);
+        carUI.SetActive(false);
+        crewUI.SetActive(true);
+        hackerUI.SetActive(false);
+        optionsUI.SetActive(false);
+        quitUI.SetActive(false);
+    }
+
+    public void HackerCUButton()
+    {
+        mainMenuUI.SetActive(false);
+        hubUI.SetActive(false);
+        heistUI.SetActive(false);
+        heistContractUI.SetActive(false);
+        carUI.SetActive(false);
+        crewUI.SetActive(false);
+        hackerUI.SetActive(true);
+        optionsUI.SetActive(false);
+        quitUI.SetActive(false);
+    }
+    #endregion
+
+    #region Heist Select Buttons
     //Level Select Buttons
     public void Level1Button()
     {
@@ -119,46 +166,9 @@ public class MainMenu : MonoBehaviour
     {
         heistContractUI.SetActive(false);
     }
+    #endregion
 
-
-    //Customisation and Upgrade Buttons
-    public void CarCUButton()
-    {
-        mainMenuUI.SetActive(false);
-        hubUI.SetActive(false);
-        heistUI.SetActive(false);
-        heistContractUI.SetActive(false);
-        carUI.SetActive(true);
-        crewUI.SetActive(false);
-        hackerUI.SetActive(false);
-        optionsUI.SetActive(false);
-        quitUI.SetActive(false);
-    }
-    public void CrewCUButton()
-    {
-        mainMenuUI.SetActive(false);
-        hubUI.SetActive(false);
-        heistUI.SetActive(false);
-        heistContractUI.SetActive(false);
-        carUI.SetActive(false);
-        crewUI.SetActive(true);
-        hackerUI.SetActive(false);
-        optionsUI.SetActive(false);
-        quitUI.SetActive(false);
-    }
-    public void HackerCUButton()
-    {
-        mainMenuUI.SetActive(false);
-        hubUI.SetActive(false);
-        heistUI.SetActive(false);
-        heistContractUI.SetActive(false);
-        carUI.SetActive(false);
-        crewUI.SetActive(false);
-        hackerUI.SetActive(true);
-        optionsUI.SetActive(false);
-        quitUI.SetActive(false);
-    }
-
+    #region Quit and Options Menu Functions
     //Options Buttons
     public void OptionsButton()
     {
@@ -182,4 +192,5 @@ public class MainMenu : MonoBehaviour
     {
         quitUI.SetActive(false);
     }
+    #endregion
 }
