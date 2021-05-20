@@ -11,10 +11,6 @@ public class CustomisationManager : MonoBehaviour
 
     private void Start()
     {
-        if (PlayerPrefs.GetInt("PlayerCosmetic") == 1)
-        {
-            player.color = carTypes[PlayerPrefs.GetInt("PlayerCosmetic") - 1];
-        }
+            player.color = carTypes[PlayerPrefs.GetInt("CarSprite")];
     }
-
 }

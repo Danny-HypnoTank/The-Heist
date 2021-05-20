@@ -6,32 +6,74 @@ public class CustomisationMenu : MonoBehaviour
 {
 
 
-    //Car Customisation - upgrades
-    public void equipeCosmetic1()
+
+    #region CarMenu
+    [SerializeField]
+    private GameObject[] carUI;
+    [SerializeField]
+    private int curCar;
+
+    private void Start()
     {
-        PlayerPrefs.SetInt("PlayerCosmetic", 1);
-        PlayerPrefs.Save();
+        curCar = 0;
+        carUI[curCar].SetActive(true);
     }
-    public void equipeCosmetic2()
+
+    public void NextButton()
     {
-        PlayerPrefs.SetInt("PlayerCosmetic", 2);
-        PlayerPrefs.Save();
+        if (curCar < 4 )
+        {
+            curCar++;
+            for (int i = 0; i < carUI.Length; i++)
+            {
+                carUI[i].SetActive(false);
+            }
+            carUI[curCar].SetActive(true);
+        }
+        else if (curCar == 4)
+        {
+            curCar = 0;
+            for (int i = 0; i < carUI.Length; i++)
+            {
+                carUI[i].SetActive(false);
+            }
+            carUI[curCar].SetActive(true);
+        }
     }
-    public void equipeCosmetic3()
+    public void PreviousButton()
     {
-        PlayerPrefs.SetInt("PlayerCosmetic", 3);
-        PlayerPrefs.Save();
+        if (curCar > 0)
+        {
+            curCar--;
+            for (int i = 0; i < carUI.Length; i++)
+            {
+                carUI[i].SetActive(false);
+            }
+            carUI[curCar].SetActive(true);
+        }
+        else if (curCar == 0)
+        {
+            curCar = 4;
+            for (int i = 0; i < carUI.Length; i++)
+            {
+                carUI[i].SetActive(false);
+            }
+            carUI[curCar].SetActive(true);
+        }
     }
-    public void equipeCosmetic4()
+    public void EquipButton()
     {
-        PlayerPrefs.SetInt("PlayerCosmetic", 4);
-        PlayerPrefs.Save();
+        PlayerPrefs.SetInt("CarSprite", curCar);
     }
-    public void equipeCosmetic5()
+
+    public void PurchaseBoostButton()
     {
-        PlayerPrefs.SetInt("PlayerCosmetic", 5);
-        PlayerPrefs.Save();
+        //Unlock Boost Ability;
     }
+    #endregion
+
+
+
 
     //Crew Customisation - upgrades
     public void CrewUpgrade()
