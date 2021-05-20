@@ -10,6 +10,8 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private GameObject mainMenuUI;
     [SerializeField]
+    private GameObject hubUI;
+    [SerializeField]
     private GameObject heistUI;
     [SerializeField]
     private GameObject carUI;
@@ -38,6 +40,20 @@ public class MainMenu : MonoBehaviour
     public void Start()
     {
         mainMenuUI.SetActive(true);
+        hubUI.SetActive(false);
+        heistUI.SetActive(false);
+        heistContractUI.SetActive(false);
+        carUI.SetActive(false);
+        crewUI.SetActive(false);
+        hackerUI.SetActive(false);
+        optionsUI.SetActive(false);
+        quitUI.SetActive(false);
+    }
+
+    public void StartButton()
+    {
+        mainMenuUI.SetActive(false);
+        hubUI.SetActive(true);
         heistUI.SetActive(false);
         heistContractUI.SetActive(false);
         carUI.SetActive(false);
@@ -50,6 +66,7 @@ public class MainMenu : MonoBehaviour
     public void HeistButton()
     {
         mainMenuUI.SetActive(false);
+        hubUI.SetActive(false);
         heistUI.SetActive(true);
         heistContractUI.SetActive(false);
         carUI.SetActive(false);
@@ -108,6 +125,7 @@ public class MainMenu : MonoBehaviour
     public void CarCUButton()
     {
         mainMenuUI.SetActive(false);
+        hubUI.SetActive(false);
         heistUI.SetActive(false);
         heistContractUI.SetActive(false);
         carUI.SetActive(true);
@@ -119,6 +137,7 @@ public class MainMenu : MonoBehaviour
     public void CrewCUButton()
     {
         mainMenuUI.SetActive(false);
+        hubUI.SetActive(false);
         heistUI.SetActive(false);
         heistContractUI.SetActive(false);
         carUI.SetActive(false);
@@ -130,6 +149,7 @@ public class MainMenu : MonoBehaviour
     public void HackerCUButton()
     {
         mainMenuUI.SetActive(false);
+        hubUI.SetActive(false);
         heistUI.SetActive(false);
         heistContractUI.SetActive(false);
         carUI.SetActive(false);
