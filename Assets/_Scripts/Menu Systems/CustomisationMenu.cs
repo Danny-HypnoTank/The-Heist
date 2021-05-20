@@ -5,18 +5,19 @@ using UnityEngine.UI;
 
 public class CustomisationMenu : MonoBehaviour
 {
-    //Hub Variables
+    #region Hub Variables
     [SerializeField]
     private Image currentCarIamge;
     [SerializeField]
     private Sprite[] curCarSprites;
+    #endregion
 
-    //Car Menu Variables
+    #region Car Variables
     [SerializeField]
     private GameObject[] carUI;
     [SerializeField]
     private int curCar;
-
+    #endregion
 
     #region CarMenu
     private void Start()
@@ -85,10 +86,7 @@ public class CustomisationMenu : MonoBehaviour
     }
     #endregion
 
-
-
-
-    //Crew Customisation - upgrades
+    #region Crew Upgrades
     public void IncreaseAvailableHeists()
     {
 
@@ -113,7 +111,9 @@ public class CustomisationMenu : MonoBehaviour
         PlayerPrefs.SetInt("IncreaseChanceOfNotBeingCaught", 1);
         PlayerPrefs.Save();
     }
+    #endregion
 
-
+    #region Hacker Upgrades
     //Hacking Customisation - upgrades
+    #endregion
 }

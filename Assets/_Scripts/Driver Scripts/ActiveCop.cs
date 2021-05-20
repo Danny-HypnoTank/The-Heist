@@ -4,21 +4,25 @@ using UnityEngine;
 
 public class ActiveCop : MonoBehaviour
 {
+    #region Game Progress Variables
     [SerializeField]
     private HeistTracker heistTracker;
+    #endregion
 
+    #region Cop Waypoint Movement Variables
     [SerializeField]
     private Transform[] waypoints;
     int cur = 0;
     [SerializeField]
     private Rigidbody2D enemyRB;
     public float speed = 4;
+    #endregion
 
+    #region Cop Player Variables
     [SerializeField]
     private GameObject player;
     public bool playerSpotted = false;
-
-
+    #endregion
 
     private void FixedUpdate()
     {
@@ -26,6 +30,7 @@ public class ActiveCop : MonoBehaviour
         EnemyRotation();
     }
 
+    #region Enemy Functions
     private void EnemyMovement()
     {
         if (heistTracker.EnabledCops == true)
@@ -57,4 +62,5 @@ public class ActiveCop : MonoBehaviour
         GetComponent<Animator>().SetFloat("DirX", dir.x);
         GetComponent<Animator>().SetFloat("DirY", dir.y);
     }
+    #endregion
 }

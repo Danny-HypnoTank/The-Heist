@@ -32,6 +32,7 @@ public class PlayerPacManTest : MonoBehaviour
         }
     }
 
+    #region Player Movement Functions
     void ReadInputAndMove()
     {
         // move closer to destination
@@ -105,7 +106,9 @@ public class PlayerPacManTest : MonoBehaviour
     {
         return _dir;
     }
+    #endregion
 
+    #region Player Collision Functions
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "DropOffPoint")
@@ -152,7 +155,9 @@ public class PlayerPacManTest : MonoBehaviour
             }
         }
     }
+    #endregion
 
+    #region Player Ability Functions
     public void BoostButton()
     {
         if (boosting == false)
@@ -169,4 +174,5 @@ public class PlayerPacManTest : MonoBehaviour
         speed = speed / 2;
         boosting = false;
     }
+    #endregion
 }
