@@ -14,11 +14,11 @@ public class MoveSystem : MonoBehaviour
 
     private Vector3 resetPos;
 
-    public GameObject WinScreen;
+    [SerializeField]
+    private DragDropManager gameManager;
 
     void Start()
     {
-        WinScreen.SetActive(false);
         resetPos = this.transform.localPosition;
     }
 
@@ -37,22 +37,23 @@ public class MoveSystem : MonoBehaviour
                 this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, this.gameObject.transform.localPosition.z);
             }
         }
-
-
     }
 
     private void OnMouseDown()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (gameManager.levelFail == false)
         {
-            Vector3 mousePos;
-            mousePos = Input.mousePosition;
-            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+            if (Input.GetMouseButtonDown(0))
+            {
+                Vector3 mousePos;
+                mousePos = Input.mousePosition;
+                mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
-            startPosX = mousePos.x = this.transform.localPosition.x;
-            startPosY = mousePos.y = this.transform.localPosition.y;
+                startPosX = mousePos.x = this.transform.localPosition.x;
+                startPosY = mousePos.y = this.transform.localPosition.y;
 
-            moving = true;
+                moving = true;
+            }
         }
     }
 
@@ -64,8 +65,7 @@ public class MoveSystem : MonoBehaviour
             Mathf.Abs(this.transform.localPosition.y - correctForm.transform.localPosition.y) <= 0.5f)
         {
             this.transform.localPosition = new Vector3(correctForm.transform.localPosition.x, correctForm.transform.localPosition.y, correctForm.transform.localPosition.z);
-            finish = true;
-            WinScreen.SetActive(true);
+            gameManager.correctMovements++;
         }
         else
         {
