@@ -14,15 +14,7 @@ public class ButtonPress : MonoBehaviour {
 
     [SerializeField]
     private GameObject winScreen;
-    [SerializeField]
-    private GameObject LoseScreen;
-
-    [SerializeField]
-    private Text timer;
-    [SerializeField]
-    private GameObject keyPadTimer;
-    [SerializeField]
-    private float timeRemaining = 60;
+   
     private bool levelComplete = false;
 
     public GameObject objective;
@@ -32,9 +24,8 @@ public class ButtonPress : MonoBehaviour {
     void Start()
     {
         winScreen.gameObject.SetActive(false);
-        LoseScreen.gameObject.SetActive(false);
-        keyPadTimer.SetActive(true);
-        timer.text = "Time Remaining: " + timeRemaining;
+       
+
         objective.gameObject.SetActive(true);
 
     }
@@ -50,10 +41,10 @@ public class ButtonPress : MonoBehaviour {
             {
                 Debug.Log("Correct!");
                 levelComplete = true;
-                keyPadTimer.SetActive(false);
-               winScreen.gameObject.SetActive(true);
-               // timer.gameObject.SetActive(false);
-               objective.gameObject.SetActive(false);
+               
+                winScreen.gameObject.SetActive(true);
+               
+                objective.gameObject.SetActive(false);
             }
 
             else
@@ -61,20 +52,6 @@ public class ButtonPress : MonoBehaviour {
                 playerCode = "";
                 totalDigits = 0;
                 Debug.Log("Wrong code try again");
-            }
-        }
-        if (levelComplete != true)
-        {
-            if (timeRemaining > 0)
-            {
-                timeRemaining -= Time.deltaTime;
-            }
-            timer.text = "Time Remaining: " + timeRemaining.ToString("f0");
-
-            if (timeRemaining <= 0)
-            {
-                keyPadTimer.SetActive(false);
-                LoseScreen.SetActive(true);
             }
         }
     }
