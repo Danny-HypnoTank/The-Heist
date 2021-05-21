@@ -5,11 +5,17 @@ using UnityEngine.UI;
 
 public class CustomisationMenu : MonoBehaviour
 {
+    //Universal Variables
+    private int spendableMoney;
+    private int offShoreMoney;
+
     #region Hub Variables
     [SerializeField]
     private Image currentCarIamge;
     [SerializeField]
     private Sprite[] curCarSprites;
+    [SerializeField]
+    private Text spendableMoneyHubText;
     #endregion
 
     #region Car Variables
@@ -17,14 +23,42 @@ public class CustomisationMenu : MonoBehaviour
     private GameObject[] carUI;
     [SerializeField]
     private int curCar;
+    [SerializeField]
+    private Text spendableMoneyCarText;
+    #endregion
+
+    #region Crew Variables
+    [SerializeField]
+    private Text spendableMoneyCrewText;
+    [SerializeField]
+    private Text offShoreMoneyText;
+    #endregion
+
+    #region Hacker Variables
+    [SerializeField]
+    private Text spendableMoneyHackText;
     #endregion
 
     #region CarMenu
     private void Start()
     {
+        if (PlayerPrefs.HasKey("SpendableMoney"))
+        {
+            spendableMoney = PlayerPrefs.GetInt("SpendableMoney");
+        }
+        else
+        {
+            spendableMoney = 0;
+        }
+
         curCar = 0;
         carUI[curCar].SetActive(true);
         currentCarIamge.sprite = curCarSprites[curCar];
+        spendableMoneyHubText.text = "$: " + spendableMoney;
+        spendableMoneyCarText.text = "$: " + spendableMoney;
+        spendableMoneyCrewText.text = "$: " + spendableMoney;
+        spendableMoneyHackText.text = "$: " + spendableMoney;
+        offShoreMoneyText.text = "Off Shore Account: $" + offShoreMoney;
     }
 
     public void NextButton()
@@ -77,39 +111,123 @@ public class CustomisationMenu : MonoBehaviour
 
     public void PurchaseBoostButton()
     {
-        //Unlock Boost Ability;
-        //Enable Boost inGame - through prefs
+        if (spendableMoney > 1)
+        {
+            spendableMoney -= 1;
+            spendableMoneyCarText.text = "$: " + spendableMoney;
+            spendableMoneyCrewText.text = "$: " + spendableMoney;
+            spendableMoneyHackText.text = "$: " + spendableMoney;
+            //Enable Boost inGame - through prefs
+        }
+        else
+        {
+
+        }
     }
     public void IncreaseGarageSize()
     {
+        if (spendableMoney > 1)
+        {
+            spendableMoney -= 1;
+            spendableMoneyCarText.text = "$: " + spendableMoney;
+            spendableMoneyCrewText.text = "$: " + spendableMoney;
+            spendableMoneyHackText.text = "$: " + spendableMoney;
+            //Increase garagesize - through prefs
+        }
+        else
+        {
 
+        }
     }
     #endregion
 
     #region Crew Upgrades
     public void IncreaseAvailableHeists()
     {
+        if (spendableMoney > 1)
+        {
+            spendableMoney -= 1;
+            spendableMoneyCarText.text = "$: " + spendableMoney;
+            spendableMoneyCrewText.text = "$: " + spendableMoney;
+            spendableMoneyHackText.text = "$: " + spendableMoney;
+            //Increase available heist level - through prefs
+        }
+        else
+        {
 
+        }
     }
+
     public void IncreaseMoneyPerTake()
     {
-        PlayerPrefs.SetInt("IncreaseMoneyPerTake", 1);
-        PlayerPrefs.Save();
+        if (spendableMoney > 1)
+        {
+            spendableMoney -= 1;
+            spendableMoneyCarText.text = "$: " + spendableMoney;
+            spendableMoneyCrewText.text = "$: " + spendableMoney;
+            spendableMoneyHackText.text = "$: " + spendableMoney;
+
+            PlayerPrefs.SetInt("IncreaseMoneyPerTake", 1);
+            PlayerPrefs.Save();
+        }
+        else
+        {
+
+        }
     }
+
     public void IncreaseMaxBeforePickup()
     {
-        PlayerPrefs.SetInt("IncreaseMaxBeforePickup", 1);
-        PlayerPrefs.Save();
+        if (spendableMoney > 1)
+        {
+            spendableMoney -= 1;
+            spendableMoneyCarText.text = "$: " + spendableMoney;
+            spendableMoneyCrewText.text = "$: " + spendableMoney;
+            spendableMoneyHackText.text = "$: " + spendableMoney;
+
+            PlayerPrefs.SetInt("IncreaseMaxBeforePickup", 1);
+            PlayerPrefs.Save();
+        }
+        else
+        {
+
+        }
     }
+
     public void IncreaseTakeSpeed()
     {
-        PlayerPrefs.SetInt("IncreaseTakeSpeed", 1);
-        PlayerPrefs.Save();
+        if (spendableMoney > 1)
+        {
+            spendableMoney -= 1;
+            spendableMoneyCarText.text = "$: " + spendableMoney;
+            spendableMoneyCrewText.text = "$: " + spendableMoney;
+            spendableMoneyHackText.text = "$: " + spendableMoney;
+
+            PlayerPrefs.SetInt("IncreaseTakeSpeed", 1);
+            PlayerPrefs.Save();
+        }
+        else
+        {
+
+        }
     }
+
     public void IncreaseChanceOfNotBeingCaught()
     {
-        PlayerPrefs.SetInt("IncreaseChanceOfNotBeingCaught", 1);
-        PlayerPrefs.Save();
+        if (spendableMoney > 1)
+        {
+            spendableMoney -= 1;
+            spendableMoneyCarText.text = "$: " + spendableMoney;
+            spendableMoneyCrewText.text = "$: " + spendableMoney;
+            spendableMoneyHackText.text = "$: " + spendableMoney;
+
+            PlayerPrefs.SetInt("IncreaseChanceOfNotBeingCaught", 1);
+            PlayerPrefs.Save();
+        }
+        else
+        {
+
+        }
     }
     #endregion
 

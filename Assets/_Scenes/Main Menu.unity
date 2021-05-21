@@ -5136,7 +5136,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 345}
+  m_AnchoredPosition: {x: -700, y: 320}
   m_SizeDelta: {x: 900, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &785700824
@@ -5161,7 +5161,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 60
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
@@ -5172,7 +5172,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Car Customisation and Upgrades
+  m_Text: MoneyText
 --- !u!222 &785700825
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6353,6 +6353,7 @@ MonoBehaviour:
   - {fileID: 7869986391193632487, guid: 445100dbcfe86744dac1d5498569cd25, type: 3}
   - {fileID: -4207740998185988336, guid: 445100dbcfe86744dac1d5498569cd25, type: 3}
   - {fileID: 21300000, guid: 801db71a4229de842bc93aa699464c96, type: 3}
+  spendableMoneyHubText: {fileID: 1779601516}
   carUI:
   - {fileID: 682074443}
   - {fileID: 475165582}
@@ -6360,6 +6361,10 @@ MonoBehaviour:
   - {fileID: 174330084}
   - {fileID: 646642272}
   curCar: 0
+  spendableMoneyCarText: {fileID: 785700824}
+  spendableMoneyCrewText: {fileID: 1948011188}
+  offShoreMoneyText: {fileID: 1346628623}
+  spendableMoneyHackText: {fileID: 90592830}
 --- !u!1 &988530224
 GameObject:
   m_ObjectHideFlags: 0
@@ -15167,7 +15172,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2084109937
 RectTransform:
   m_ObjectHideFlags: 0
