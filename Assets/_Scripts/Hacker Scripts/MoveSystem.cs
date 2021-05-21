@@ -14,17 +14,15 @@ public class MoveSystem : MonoBehaviour
 
     private Vector3 resetPos;
 
-    public GameObject objective;
-    public GameObject endScreen;
+    public GameObject WinScreen;
 
     void Start()
     {
+        WinScreen.SetActive(false);
         resetPos = this.transform.localPosition;
-        objective.SetActive(true);
-        endScreen.SetActive(false);
     }
 
-   
+
     void Update()
     {
         if (finish == false)
@@ -39,8 +37,8 @@ public class MoveSystem : MonoBehaviour
                 this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, this.gameObject.transform.localPosition.z);
             }
         }
-      
-        
+
+
     }
 
     private void OnMouseDown()
@@ -67,8 +65,7 @@ public class MoveSystem : MonoBehaviour
         {
             this.transform.localPosition = new Vector3(correctForm.transform.localPosition.x, correctForm.transform.localPosition.y, correctForm.transform.localPosition.z);
             finish = true;
-            objective.SetActive(false);
-            endScreen.SetActive(true);
+            WinScreen.SetActive(true);
         }
         else
         {
