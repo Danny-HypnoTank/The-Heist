@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ButtonPress : MonoBehaviour {
     public static string correctCode = "0692";
@@ -10,16 +12,29 @@ public class ButtonPress : MonoBehaviour {
 
     public static string didclick = "n";
 
-    public GameObject endScreen;
-    public GameObject timer;
+    [SerializeField]
+    private GameObject winScreen;
+    [SerializeField]
+    private GameObject LoseScreen;
+
+    [SerializeField]
+    private Text timer;
+    [SerializeField]
+    private GameObject keyPadTimer;
+    [SerializeField]
+    private float timeRemaining = 60;
+    private bool levelComplete = false;
+
     public GameObject objective;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        endScreen.gameObject.SetActive(false);
-        timer.gameObject.SetActive(true);
+        winScreen.gameObject.SetActive(false);
+        LoseScreen.gameObject.SetActive(false);
+        keyPadTimer.SetActive(true);
+        timer.text = "Time Remaining: " + timeRemaining;
         objective.gameObject.SetActive(true);
 
     }
@@ -34,7 +49,9 @@ public class ButtonPress : MonoBehaviour {
             if (playerCode==correctCode)
             {
                 Debug.Log("Correct!");
-               endScreen.gameObject.SetActive(true);
+                levelComplete = true;
+                keyPadTimer.SetActive(false);
+               winScreen.gameObject.SetActive(true);
                // timer.gameObject.SetActive(false);
                objective.gameObject.SetActive(false);
             }
@@ -44,6 +61,20 @@ public class ButtonPress : MonoBehaviour {
                 playerCode = "";
                 totalDigits = 0;
                 Debug.Log("Wrong code try again");
+            }
+        }
+        if (levelComplete != true)
+        {
+            if (timeRemaining > 0)
+            {
+                timeRemaining -= Time.deltaTime;
+            }
+            timer.text = "Time Remaining: " + timeRemaining.ToString("f0");
+
+            if (timeRemaining <= 0)
+            {
+                keyPadTimer.SetActive(false);
+                LoseScreen.SetActive(true);
             }
         }
     }
@@ -75,6 +106,11 @@ public class ButtonPress : MonoBehaviour {
         yield return new WaitForSeconds(1);
         GetComponent<SpriteRenderer>().color = new Color(1, 1, 1);
         didclick = "n";
+    }
+
+    public void ContinueButton()
+    {
+        SceneManager.LoadScene(0);
     }
 }
 
