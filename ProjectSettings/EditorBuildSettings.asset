@@ -15,9 +15,9 @@ EditorBuildSettings:
     path: Assets/_Scenes/Hacker Scenes/ImagePuzzle.unity
     guid: c7d4f3afd414647489cc9b03cd0ac08a
   - enabled: 1
-    path: Assets/_Scenes/Hacker Scenes/Keypad.unity
-    guid: 48c68a0016833d3428778cc70c6a8ae3
-  - enabled: 1
     path: Assets/_Scenes/Hacker Scenes/DragDrop.unity
     guid: 974592c54ef3fd3408ac930b4da2e105
+  - enabled: 1
+    path: Assets/_Scenes/Hacker Scenes/Keypad.unity
+    guid: 48c68a0016833d3428778cc70c6a8ae3
   m_configObjects: {}
