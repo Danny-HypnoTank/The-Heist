@@ -13,22 +13,7 @@ public class ButtonPress : MonoBehaviour {
     public static string didclick = "n";
 
     [SerializeField]
-    private GameObject winScreen;
-   
-    private bool levelComplete = false;
-
-    public GameObject objective;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        winScreen.gameObject.SetActive(false);
-       
-
-        objective.gameObject.SetActive(true);
-
-    }
+    private Timer gameManager;
 
     // Update is called once per frame
     void Update()
@@ -40,13 +25,8 @@ public class ButtonPress : MonoBehaviour {
             if (playerCode==correctCode)
             {
                 Debug.Log("Correct!");
-                levelComplete = true;
-               
-                winScreen.gameObject.SetActive(true);
-               
-                objective.gameObject.SetActive(false);
+                gameManager.levelComplete = true;
             }
-
             else
             {
                 playerCode = "";

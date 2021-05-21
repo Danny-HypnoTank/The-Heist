@@ -3,25 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Timer : MonoBehaviour
-
+public class DragDropManager : MonoBehaviour
 {
     [SerializeField]
     private Text timer;
-
     [SerializeField]
-    private GameObject keyPadTimer;
+    private GameObject timerOBJ;
     [SerializeField]
     private float timeRemaining;
     private float totalTime = 60;
-    public bool levelComplete = false;
+    private bool levelComplete = false;
+    public bool levelFail= false;
     [SerializeField]
     private GameObject LoseScreen;
     [SerializeField]
     private GameObject winScreen;
-    public GameObject objective;
     [SerializeField]
-    private Text remainingTimeText;
+    private Text timeRemainingText;
+
+    public GameObject objective;
+
+    public int correctMovements;
 
     [SerializeField]
     private Text moneyGained;
@@ -33,26 +35,34 @@ public class Timer : MonoBehaviour
     void Start()
     {
         timeRemaining = totalTime;
-        keyPadTimer.SetActive(true);
+        timerOBJ.SetActive(true);
         timer.text = "Time Remaining: " + timeRemaining;
         LoseScreen.gameObject.SetActive(false);
         winScreen.gameObject.SetActive(false);
+        timerOBJ.SetActive(true);
+        objective.SetActive(true);
+        levelComplete = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (correctMovements == 5)
+        {
+            levelComplete = true;
+        }
+
         if (levelComplete == true)
         {
-            keyPadTimer.SetActive(false);
-            winScreen.gameObject.SetActive(true);
-            objective.gameObject.SetActive(false);
-            remainingTimeText.text = "Time Completed in: " + ((totalTime - timeRemaining).ToString("f0"));
+            objective.SetActive(false);
+            timerOBJ.SetActive(false);
+            winScreen.SetActive(true);
+            timeRemainingText.text = "Time Completed in:" + ((totalTime - timeRemaining).ToString("f0"));
             if ((totalTime - timeRemaining) <= 10)
             {
                 moneyGained.text = "Money gained: " + moneyGainedStage1;
             }
-            else if ((totalTime - timeRemaining) > 10 && (totalTime - timeRemaining) <= 20 )
+            else if ((totalTime - timeRemaining) > 10 && (totalTime - timeRemaining) <= 20)
             {
                 moneyGained.text = "Money gained: " + moneyGainedStage2;
             }
@@ -61,7 +71,6 @@ public class Timer : MonoBehaviour
                 moneyGained.text = "Money gained: " + moneyGainedStage3;
             }
         }
-
 
         if (levelComplete != true)
         {
@@ -73,7 +82,9 @@ public class Timer : MonoBehaviour
 
             if (timeRemaining <= 0)
             {
-                keyPadTimer.SetActive(false);
+                levelFail = true;
+                timerOBJ.SetActive(false);
+                objective.SetActive(false);
                 LoseScreen.SetActive(true);
             }
         }

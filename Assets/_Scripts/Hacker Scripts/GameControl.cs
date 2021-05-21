@@ -11,10 +11,13 @@ public class GameControl : MonoBehaviour
     [SerializeField]
     private Text timer;
     [SerializeField]
-    private float timeRemaining = 60;
+    private float timeRemaining;
+    private float totalTime = 60;
     private bool levelComplete = false;
     [SerializeField]
     private GameObject winUI;
+    [SerializeField]
+    private Text timeRemainingText;
     [SerializeField]
     private GameObject loseUI;
     [SerializeField]
@@ -25,9 +28,16 @@ public class GameControl : MonoBehaviour
 
     public GameObject objective;
 
+    [SerializeField]
+    private Text moneyGained;
+    private int moneyGainedStage1 = 30;
+    private int moneyGainedStage2 = 20;
+    private int moneyGainedStage3 = 10;
+
     // Start is called before the first frame update
     void Start()
     {
+        timeRemaining = totalTime;
         winUI.SetActive(false);
         loseUI.SetActive(false);
         timerOBJ.SetActive(true);
@@ -66,6 +76,19 @@ public class GameControl : MonoBehaviour
             objective.SetActive(false);
             timerOBJ.SetActive(false);
             winUI.SetActive(true);
+            timeRemainingText.text = "Time Completed in:" + ((totalTime - timeRemaining).ToString("f0"));
+            if ((totalTime - timeRemaining) <= 10)
+            {
+                moneyGained.text = "Money gained: " + moneyGainedStage1;
+            }
+            else if ((totalTime - timeRemaining) > 10 && (totalTime - timeRemaining) <= 20)
+            {
+                moneyGained.text = "Money gained: " + moneyGainedStage2;
+            }
+            else if ((totalTime - timeRemaining) > 20 && (totalTime - timeRemaining) < 60)
+            {
+                moneyGained.text = "Money gained: " + moneyGainedStage3;
+            }
         }
         
        
