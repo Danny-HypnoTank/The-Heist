@@ -25,6 +25,17 @@ public class CustomisationMenu : MonoBehaviour
     private int curCar;
     [SerializeField]
     private Text spendableMoneyCarText;
+
+    [SerializeField]
+    private GameObject car2PurchaseButton;
+    [SerializeField]
+    private GameObject car3PurchaseButton;
+    [SerializeField]
+    private GameObject car4PurchaseButton;
+    [SerializeField]
+    private GameObject car5PurchaseButton;
+    [SerializeField]
+    private int[] carPurchasedCheckForEquip;
     #endregion
 
     #region Crew Variables
@@ -50,6 +61,17 @@ public class CustomisationMenu : MonoBehaviour
         {
             spendableMoney = 0;
         }
+
+        if (PlayerPrefs.HasKey("OffShoreMoney"))
+        {
+            offShoreMoney = PlayerPrefs.GetInt("OffShoreMoney");
+        }
+        else
+        {
+            offShoreMoney = 0;
+        }
+
+        CarPurchaseCheck();
 
         curCar = 0;
         carUI[curCar].SetActive(true);
@@ -105,8 +127,84 @@ public class CustomisationMenu : MonoBehaviour
     }
     public void EquipButton()
     {
-        PlayerPrefs.SetInt("CarSprite", curCar);
-        currentCarIamge.sprite = curCarSprites[curCar];
+        if (carPurchasedCheckForEquip[curCar] == 1)
+        {
+            PlayerPrefs.SetInt("CarSprite", curCar);
+            currentCarIamge.sprite = curCarSprites[curCar];
+        }
+    }
+
+    public void PurchaseCar2Button()
+    {
+        if (spendableMoney > 1)
+        {
+            spendableMoney -= 1;
+            spendableMoneyCarText.text = "$: " + spendableMoney;
+            spendableMoneyCrewText.text = "$: " + spendableMoney;
+            spendableMoneyHackText.text = "$: " + spendableMoney;
+            PlayerPrefs.SetInt("Car2Purchased", 1);
+            PlayerPrefs.Save();
+            carPurchasedCheckForEquip[1] = 1;
+            car2PurchaseButton.SetActive(false);
+        }
+        else
+        {
+
+        }
+    }
+    public void PurchaseCar3Button()
+    {
+        if (spendableMoney > 1)
+        {
+            spendableMoney -= 1;
+            spendableMoneyCarText.text = "$: " + spendableMoney;
+            spendableMoneyCrewText.text = "$: " + spendableMoney;
+            spendableMoneyHackText.text = "$: " + spendableMoney;
+            PlayerPrefs.SetInt("Car3Purchased", 1);
+            carPurchasedCheckForEquip[2] = 1;
+            PlayerPrefs.Save();
+            car3PurchaseButton.SetActive(false);
+        }
+        else
+        {
+
+        }
+    }
+    public void PurchaseCar4Button()
+    {
+        if (spendableMoney > 1)
+        {
+            spendableMoney -= 1;
+            spendableMoneyCarText.text = "$: " + spendableMoney;
+            spendableMoneyCrewText.text = "$: " + spendableMoney;
+            spendableMoneyHackText.text = "$: " + spendableMoney;
+            PlayerPrefs.SetInt("Car4Purchased", 1);
+            carPurchasedCheckForEquip[3] = 1;
+            PlayerPrefs.Save();
+            car4PurchaseButton.SetActive(false);
+        }
+        else
+        {
+
+        }
+    }
+    public void PurchaseCar5Button()
+    {
+        if (spendableMoney > 1)
+        {
+            spendableMoney -= 1;
+            spendableMoneyCarText.text = "$: " + spendableMoney;
+            spendableMoneyCrewText.text = "$: " + spendableMoney;
+            spendableMoneyHackText.text = "$: " + spendableMoney;
+            PlayerPrefs.SetInt("Car5Purchased", 1);
+            carPurchasedCheckForEquip[4] = 1;
+            PlayerPrefs.Save();
+            car5PurchaseButton.SetActive(false);
+        }
+        else
+        {
+
+        }
     }
 
     public void PurchaseBoostButton()
@@ -137,6 +235,51 @@ public class CustomisationMenu : MonoBehaviour
         else
         {
 
+        }
+    }
+
+    private void CarPurchaseCheck()
+    {
+        carPurchasedCheckForEquip[0] = 1;
+        if (PlayerPrefs.GetInt("Car2Purchased") == 1)
+        {
+            car2PurchaseButton.SetActive(false);
+            carPurchasedCheckForEquip[1] = 1;
+        }
+        else
+        {
+            car2PurchaseButton.SetActive(true);
+            carPurchasedCheckForEquip[1] = 0;
+        }
+        if (PlayerPrefs.GetInt("Car3Purchased") == 1)
+        {
+            car3PurchaseButton.SetActive(false);
+            carPurchasedCheckForEquip[2] = 1;
+        }
+        else
+        {
+            car3PurchaseButton.SetActive(true);
+            carPurchasedCheckForEquip[2] = 0;
+        }
+        if (PlayerPrefs.GetInt("Car4Purchased") == 1)
+        {
+            car4PurchaseButton.SetActive(false);
+            carPurchasedCheckForEquip[3] = 1;
+        }
+        else
+        {
+            car4PurchaseButton.SetActive(true);
+            carPurchasedCheckForEquip[3] = 0;
+        }
+        if (PlayerPrefs.GetInt("Car5Purchased") == 1)
+        {
+            car5PurchaseButton.SetActive(false);
+            carPurchasedCheckForEquip[4] = 1;
+        }
+        else
+        {
+            car5PurchaseButton.SetActive(true);
+            carPurchasedCheckForEquip[4] = 0;
         }
     }
     #endregion
