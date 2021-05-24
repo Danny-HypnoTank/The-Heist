@@ -51,14 +51,23 @@ public class Timer : MonoBehaviour
             if ((totalTime - timeRemaining) <= 10)
             {
                 moneyGained.text = "Money gained: " + moneyGainedStage1;
+                PlayerPrefs.SetInt("SpendableMoney", moneyGainedStage1);
+                PlayerPrefs.SetInt("OffShoreMoney", moneyGainedStage1);
+                PlayerPrefs.Save();
             }
             else if ((totalTime - timeRemaining) > 10 && (totalTime - timeRemaining) <= 20 )
             {
                 moneyGained.text = "Money gained: " + moneyGainedStage2;
+                PlayerPrefs.SetInt("SpendableMoney", moneyGainedStage2);
+                PlayerPrefs.SetInt("OffShoreMoney", moneyGainedStage2);
+                PlayerPrefs.Save();
             }
             else if ((totalTime - timeRemaining) > 20 && (totalTime - timeRemaining) < 60)
             {
                 moneyGained.text = "Money gained: " + moneyGainedStage3;
+                PlayerPrefs.SetInt("SpendableMoney", moneyGainedStage3);
+                PlayerPrefs.SetInt("OffShoreMoney", moneyGainedStage3);
+                PlayerPrefs.Save();
             }
         }
 

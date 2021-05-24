@@ -239,13 +239,16 @@ public class HeistTracker : MonoBehaviour
             loseBreakdownTakeText.text = "Take: " + totalTake / 10;
             loseOutGoingsText.text = "Expenditure: " + 10;
             loseTotalTakeText.text = "Total Take: " + ((totalTake / 10) - 10);
+
         }
 
         if (heistersEscape == true)
         {
             winBreakdownTakeText.text = "Take: " + totalTake;
             winOutGoingsText.text = "Expenditure: " + 10;
-            winTotalTakeText.text = "Total Take: " + (totalTake - 10);
+            winTotalTakeText.text = "Total Take: " + (totalTake);
+            PlayerPrefs.SetInt("SpendableMoney", totalTake);
+            PlayerPrefs.SetInt("OffShoreMoney", totalTake);
         }
     }
     #endregion
