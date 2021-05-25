@@ -20,6 +20,8 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private GameObject hackerUI;
     [SerializeField]
+    private GameObject heistUpgradesUI;
+    [SerializeField]
     private GameObject optionsUI;
     [SerializeField]
     private GameObject quitUI;
@@ -38,6 +40,12 @@ public class MainMenu : MonoBehaviour
     private Text heistExpenseText;
     private int DriverLevelToLoad;
     private int HackerLevelToLoad;
+    #endregion
+
+    #region PRE-HEIST upgrade Variables
+    private int spendableMoney;
+    [SerializeField]
+    private Text preSpendableMoneyText;
     #endregion
 
     #region Scene Start
@@ -65,6 +73,7 @@ public class MainMenu : MonoBehaviour
         carUI.SetActive(false);
         crewUI.SetActive(false);
         hackerUI.SetActive(false);
+        heistUpgradesUI.SetActive(false);
         optionsUI.SetActive(false);
         quitUI.SetActive(false);
     }
@@ -162,9 +171,114 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene(HackerLevelToLoad);
     }
+    public void UpgradesButton()
+    {
+        heistUpgradesUI.SetActive(true);
+    }
+    public void closeUpgradesButton()
+    {
+        heistUpgradesUI.SetActive(false);
+    }
     public void CloseHeist()
     {
         heistContractUI.SetActive(false);
+    }
+
+    public void PreHeistUpgrade1()
+    {
+        if (spendableMoney > 1)
+        {
+            spendableMoney -= 1;
+            preSpendableMoneyText.text = "$: " + spendableMoney;
+            preSpendableMoneyText.text = "$: " + spendableMoney;
+            preSpendableMoneyText.text = "$: " + spendableMoney;
+            //PlayerPrefs.SetInt("", 1);
+            PlayerPrefs.Save();
+        }
+        else
+        {
+
+        }
+    }
+    public void PreHeistUpgrade2()
+    {
+        if (spendableMoney > 1)
+        {
+            spendableMoney -= 1;
+            preSpendableMoneyText.text = "$: " + spendableMoney;
+            preSpendableMoneyText.text = "$: " + spendableMoney;
+            preSpendableMoneyText.text = "$: " + spendableMoney;
+            //PlayerPrefs.SetInt("", 1);
+            PlayerPrefs.Save();
+        }
+        else
+        {
+
+        }
+    }
+    public void PreHeistUpgrade3()
+    {
+        if (spendableMoney > 1)
+        {
+            spendableMoney -= 1;
+            preSpendableMoneyText.text = "$: " + spendableMoney;
+            preSpendableMoneyText.text = "$: " + spendableMoney;
+            preSpendableMoneyText.text = "$: " + spendableMoney;
+            //PlayerPrefs.SetInt("", 1);
+            PlayerPrefs.Save();
+        }
+        else
+        {
+
+        }
+    }
+    public void PreHeistUpgrade4()
+    {
+        if (spendableMoney > 1)
+        {
+            spendableMoney -= 1;
+            preSpendableMoneyText.text = "$: " + spendableMoney;
+            preSpendableMoneyText.text = "$: " + spendableMoney;
+            preSpendableMoneyText.text = "$: " + spendableMoney;
+            //PlayerPrefs.SetInt("", 1);
+            PlayerPrefs.Save();
+        }
+        else
+        {
+
+        }
+    }
+    public void PreHeistUpgrade5()
+    {
+        if (spendableMoney > 1)
+        {
+            spendableMoney -= 1;
+            preSpendableMoneyText.text = "$: " + spendableMoney;
+            preSpendableMoneyText.text = "$: " + spendableMoney;
+            preSpendableMoneyText.text = "$: " + spendableMoney;
+            //PlayerPrefs.SetInt("", 1);
+            PlayerPrefs.Save();
+        }
+        else
+        {
+
+        }
+    }
+    public void PreHeistUpgrade6()
+    {
+        if (spendableMoney > 1 )
+        {
+            spendableMoney -= 1;
+            preSpendableMoneyText.text = "$: " + spendableMoney;
+            preSpendableMoneyText.text = "$: " + spendableMoney;
+            preSpendableMoneyText.text = "$: " + spendableMoney;
+            //PlayerPrefs.SetInt("", 1);
+            PlayerPrefs.Save();
+        }
+        else
+        {
+
+        }
     }
     #endregion
 

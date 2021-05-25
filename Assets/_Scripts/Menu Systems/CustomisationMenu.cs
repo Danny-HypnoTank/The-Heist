@@ -209,20 +209,37 @@ public class CustomisationMenu : MonoBehaviour
 
     public void PurchaseBoostButton()
     {
-        if (spendableMoney > 1)
+        if (spendableMoney > 1 && PlayerPrefs.GetInt("BoostPurchased") == 1)
         {
             spendableMoney -= 1;
             spendableMoneyCarText.text = "$: " + spendableMoney;
             spendableMoneyCrewText.text = "$: " + spendableMoney;
             spendableMoneyHackText.text = "$: " + spendableMoney;
-            //Enable Boost inGame - through prefs
+            PlayerPrefs.SetInt("BoostPurchased", 1);
+            PlayerPrefs.Save();
         }
         else
         {
 
         }
     }
-    public void IncreaseGarageSize()
+    public void PurchaseIncreaseSpeed()
+    {
+        if (spendableMoney > 1 && PlayerPrefs.GetInt("IncreaseSpeed") == 1)
+        {
+            spendableMoney -= 1;
+            spendableMoneyCarText.text = "$: " + spendableMoney;
+            spendableMoneyCrewText.text = "$: " + spendableMoney;
+            spendableMoneyHackText.text = "$: " + spendableMoney;
+            PlayerPrefs.SetInt("IncreaseSpeed", 1);
+            PlayerPrefs.Save();
+        }
+        else
+        {
+
+        }
+    }
+    public void PurchaseCarUpgrade2()
     {
         if (spendableMoney > 1)
         {
@@ -230,12 +247,30 @@ public class CustomisationMenu : MonoBehaviour
             spendableMoneyCarText.text = "$: " + spendableMoney;
             spendableMoneyCrewText.text = "$: " + spendableMoney;
             spendableMoneyHackText.text = "$: " + spendableMoney;
-            //Increase garagesize - through prefs
+            PlayerPrefs.SetInt("", 1);
+            PlayerPrefs.Save();
         }
         else
         {
 
         }
+    }
+    public void PurchaseCarUpgrade3()
+    {
+        if (spendableMoney > 1)
+        {
+            spendableMoney -= 1;
+            spendableMoneyCarText.text = "$: " + spendableMoney;
+            spendableMoneyCrewText.text = "$: " + spendableMoney;
+            spendableMoneyHackText.text = "$: " + spendableMoney;
+            PlayerPrefs.SetInt("", 1);
+            PlayerPrefs.Save();
+        }
+        else
+        {
+
+        }
+
     }
 
     private void CarPurchaseCheck()

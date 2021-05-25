@@ -11,7 +11,7 @@ public class HeistTracker : MonoBehaviour
     private Text moneyText;
     private int money;
     private int totalTake = 0;
-    private int takeDelay = 1;
+    private float takeDelay = 1;
     private float Timer;
     #endregion
 
@@ -140,7 +140,10 @@ public class HeistTracker : MonoBehaviour
     private void HeistProgress()
     {
         heistTimerGB.SetActive(true);
-        boostenabled = true;
+        if (PlayerPrefs.GetInt("BoostPurchased") == 1)
+        {
+            boostenabled = true;
+        }
         EnabledCops = true;
         if (heistersCaught == false)
         {
@@ -164,14 +167,34 @@ public class HeistTracker : MonoBehaviour
         Timer += Time.deltaTime;
         if (PlayerPrefs.GetInt("CrewUpgrades") == 1)
         {
+            takeDelay = 1;
             if (Timer >= takeDelay)
             {
                 Timer = 0f;
                 totalTake += money + 5;
             }
         }
+        else if (PlayerPrefs.GetInt("CrewUpgrades") == 1 && PlayerPrefs.GetInt("IncreaseTakeSpeed") == 1)
+        {
+            takeDelay = 0.75f;
+            if (Timer >= takeDelay)
+            {
+                Timer = 0f;
+                totalTake += money + 5;
+            }
+        }
+        else if (PlayerPrefs.GetInt("CrewUpgrades") != 1 && PlayerPrefs.GetInt("IncreaseTakeSpeed") == 1)
+        {
+            takeDelay = 0.75f;
+            if (Timer >= takeDelay)
+            {
+                Timer = 0f;
+                totalTake += money;
+            }
+        }
         else
         {
+            takeDelay = 1;
             if (Timer >= takeDelay)
             {
                 Timer = 0f;
@@ -184,7 +207,10 @@ public class HeistTracker : MonoBehaviour
     private void PickUpProgress()
     {
         heistTimerGB.SetActive(true);
-        boostenabled = true;
+        if (PlayerPrefs.GetInt("BoostPurchased") == 1)
+        {
+            boostenabled = true;
+        }
         if (pickupRequired == true && heistersCaught == false)
         {
             objectives[1].SetActive(true);
