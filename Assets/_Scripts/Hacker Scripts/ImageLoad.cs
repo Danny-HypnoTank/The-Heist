@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class ImageLoad : MonoBehaviour
 {
-    public GameObject Puzzle;
+    public GameObject rotatePuzzle;
+    public GameObject dragDrop;
+    public GameObject keypad;
   
     void Start()
     {
-        Puzzle.SetActive(false);
+        rotatePuzzle.SetActive(false);
+        dragDrop.SetActive(false);
+        keypad.SetActive(false);
     }
 
 
     private void OnMouseDown()
     {
-        Puzzle.SetActive(true);
+        rotatePuzzle.SetActive(true);
+        dragDrop.SetActive(true);
+        keypad.SetActive(true);
     }
 }

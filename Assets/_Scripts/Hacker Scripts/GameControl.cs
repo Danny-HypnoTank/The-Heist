@@ -13,7 +13,10 @@ public class GameControl : MonoBehaviour
     [SerializeField]
     private float timeRemaining;
     private float totalTime = 60;
-    private bool levelComplete = false;
+    private bool rotatePuzzle = false;
+    private bool dragDrop = false;
+    private bool keypad = false;
+    private bool puzzlesComplete;
     [SerializeField]
     private GameObject winUI;
     [SerializeField]
@@ -27,6 +30,8 @@ public class GameControl : MonoBehaviour
     public static bool youWin;
 
     public GameObject objective;
+
+    public int correctMovements;
 
     [SerializeField]
     private Text moneyGained;
@@ -48,7 +53,7 @@ public class GameControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (levelComplete != true)
+        if (puzzlesComplete != true)
         {
             if (timeRemaining > 0)
             {
@@ -67,11 +72,11 @@ public class GameControl : MonoBehaviour
             pictures[2].rotation.z == 0 &&
             pictures[3].rotation.z == 0)
         {
-            youWin = true;
-            levelComplete = true;
+            //youWin = true;
+            rotatePuzzle = true;
         }     
 
-        if (youWin == true)
+        if (puzzlesComplete == true)
         {
             objective.SetActive(false);
             timerOBJ.SetActive(false);
