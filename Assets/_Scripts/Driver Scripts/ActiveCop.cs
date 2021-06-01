@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+
 
 public class ActiveCop : MonoBehaviour
 {
@@ -15,19 +17,28 @@ public class ActiveCop : MonoBehaviour
     int cur = 0;
     [SerializeField]
     private Rigidbody2D enemyRB;
-    public float speed = 4;
+    public float speed = 0.3f;
     #endregion
 
     #region Cop Player Variables
-    [SerializeField]
-    private GameObject player;
     public bool playerSpotted = false;
+
+    [SerializeField]
+    private Transform player;
+    private NavMeshAgent agent;
     #endregion
+
+    private void Start()
+    {
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+        agent.enabled = false;
+    }
 
     private void FixedUpdate()
     {
         EnemyMovement();
-        EnemyRotation();
     }
 
     #region Enemy Functions
@@ -46,11 +57,12 @@ public class ActiveCop : MonoBehaviour
                 {
                     cur = (cur + 1) % waypoints.Length;
                 }
+                EnemyRotation();
             }
             else if (playerSpotted == true)
             {
-                Vector2 playerP = Vector2.MoveTowards(transform.position, player.transform.position, speed);
-                enemyRB.MovePosition(playerP);
+                agent.enabled = true;
+                ChaseMovement();
             }
         }
     }
@@ -61,6 +73,11 @@ public class ActiveCop : MonoBehaviour
         Vector2 dir = waypoints[cur].position - transform.position;
         GetComponent<Animator>().SetFloat("DirX", dir.x);
         GetComponent<Animator>().SetFloat("DirY", dir.y);
+    }
+
+    private void ChaseMovement()
+    {
+        agent.SetDestination(player.position);
     }
     #endregion
 }
