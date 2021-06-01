@@ -7,7 +7,10 @@ public class SafeOpen : MonoBehaviour
    
     private void OnMouseDown()
     {
-       
+       if (KeyPickUp.hasKey = true)
+        {
+            Debug.Log("safe open");
+        }
     }
 
 }
