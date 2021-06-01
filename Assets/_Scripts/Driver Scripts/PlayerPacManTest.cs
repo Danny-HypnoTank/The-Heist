@@ -13,13 +13,13 @@ public class PlayerPacManTest : MonoBehaviour
     private bool boosting = false;
     [SerializeField]
     private HeistTracker heistTracker;
-    [SerializeField]
-    private int detectionChance;
+    //[SerializeField]
+    //private int detectionChance;
 
     void Start()
     {
         _dest = transform.position;
-        detectionChance = Random.Range(1, 5);
+        //detectionChance = Random.Range(1, 5);
         if (PlayerPrefs.GetInt("IncreaseSpeed") == 1)
         {
             speed = 0.5f;
@@ -141,17 +141,17 @@ public class PlayerPacManTest : MonoBehaviour
         {
             if (PlayerPrefs.GetInt("IncreaseChanceOfNotBeingCaught") == 1)
             {
-                if (detectionChance > 2)
-                {
+                //if (detectionChance > 2)
+                //{
                     collision.gameObject.GetComponentInParent<ActiveCop>().playerSpotted = true;
-                }
+                //}
             }
             else
             {
-                if (detectionChance > 1)
-                {
+                //if (detectionChance > 1)
+                //{
                     collision.gameObject.GetComponentInParent<ActiveCop>().playerSpotted = true;
-                }
+                //}
             }
         }
     }
