@@ -15,7 +15,7 @@ public class MoveSystem : MonoBehaviour
     private Vector3 resetPos;
 
     [SerializeField]
-    private DragDropManager gameManager;
+    private GameControl gameManager;
 
     void Start()
     {
@@ -42,7 +42,7 @@ public class MoveSystem : MonoBehaviour
     private void OnMouseDown()
     {
         if (gameManager.levelFail == false)
-        {
+       {
             if (Input.GetMouseButtonDown(0))
             {
                 Vector3 mousePos;

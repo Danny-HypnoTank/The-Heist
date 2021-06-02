@@ -5,19 +5,19 @@ using UnityEngine.UI;
 
 public class DragDropManager : MonoBehaviour
 {
-    [SerializeField]
-    private Text timer;
-    [SerializeField]
-    private GameObject timerOBJ;
+    //[SerializeField]
+    //private Text timer;
+    //[SerializeField]
+    //private GameObject timerOBJ;
     [SerializeField]
     private float timeRemaining;
     private float totalTime = 60;
     private bool levelComplete = false;
-    public bool levelFail= false;
+    public bool levelFail = false;
     [SerializeField]
     private GameObject LoseScreen;
     [SerializeField]
-    private GameObject winScreen;
+    private GameObject dragDropWin;
     [SerializeField]
     private Text timeRemainingText;
 
@@ -34,14 +34,15 @@ public class DragDropManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timeRemaining = totalTime;
-        timerOBJ.SetActive(true);
-        timer.text = "Time Remaining: " + timeRemaining;
-        LoseScreen.gameObject.SetActive(false);
-        winScreen.gameObject.SetActive(false);
-        timerOBJ.SetActive(true);
-        objective.SetActive(true);
+        //timeRemaining = totalTime;
+        //timerOBJ.SetActive(true);
+        //timer.text = "Time Remaining: " + timeRemaining;
+        //LoseScreen.gameObject.SetActive(false);
+        dragDropWin.gameObject.SetActive(false);
+        //timerOBJ.SetActive(true);
+        //objective.SetActive(true);
         levelComplete = false;
+        levelFail = false;
     }
 
     // Update is called once per frame
@@ -55,8 +56,10 @@ public class DragDropManager : MonoBehaviour
         if (levelComplete == true)
         {
             objective.SetActive(false);
-            timerOBJ.SetActive(false);
-            winScreen.SetActive(true);
+            //timerOBJ.SetActive(false);
+            dragDropWin.SetActive(true);
+
+
             timeRemainingText.text = "Time Completed in:" + ((totalTime - timeRemaining).ToString("f0"));
             if ((totalTime - timeRemaining) <= 10)
             {
@@ -87,15 +90,16 @@ public class DragDropManager : MonoBehaviour
             {
                 timeRemaining -= Time.deltaTime;
             }
-            timer.text = "Time Remaining: " + timeRemaining.ToString("f0");
+            //timer.text = "Time Remaining: " + timeRemaining.ToString("f0");
 
             if (timeRemaining <= 0)
             {
-                levelFail = true;
-                timerOBJ.SetActive(false);
-                objective.SetActive(false);
-                LoseScreen.SetActive(true);
+                levelFail = false;
+                //timerOBJ.SetActive(false);
+                //objective.SetActive(false);
+                //LoseScreen.SetActive(true);
             }
         }
     }
+    
 }
