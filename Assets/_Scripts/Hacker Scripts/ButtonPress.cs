@@ -17,6 +17,8 @@ public class ButtonPress : MonoBehaviour {
     [SerializeField]
     private Timer gameManager;
 
+    public GameObject keypadWin;
+
     // Update is called once per frame
     void Update()
     {
@@ -27,7 +29,7 @@ public class ButtonPress : MonoBehaviour {
             if (playerCode==correctCode)
             {
                 Debug.Log("Correct!");
-                //gameManager.levelComplete = true;
+                keypadWin.SetActive(true);
                 hasKey = true;
             }
             else

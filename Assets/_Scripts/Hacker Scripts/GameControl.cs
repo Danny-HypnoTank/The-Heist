@@ -26,6 +26,8 @@ public class GameControl : MonoBehaviour
     [SerializeField]
     private GameObject timerOBJ;
 
+    public bool levelFail = false;
+
 
     public static bool youWin;
 
@@ -39,6 +41,17 @@ public class GameControl : MonoBehaviour
     private int moneyGainedStage2 = 20;
     private int moneyGainedStage3 = 10;
 
+    
+    public GameObject rotatebutton;
+    public GameObject dragButton;
+    public GameObject keypadButton;
+
+    public GameObject rotateWin;
+    public GameObject dragDropWin;
+    //public GameObject keypadWin;
+    public GameObject puzzleButtons;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +61,10 @@ public class GameControl : MonoBehaviour
         timerOBJ.SetActive(true);
         youWin = false;
         objective.SetActive(true);
+        rotateWin.SetActive(false);
+        dragDropWin.SetActive(false);
+        //keypadWin.SetActive(false);
+        puzzleButtons.SetActive(true);
     }
 
     // Update is called once per frame
@@ -64,6 +81,7 @@ public class GameControl : MonoBehaviour
             {
                 timerOBJ.SetActive(false);
                 loseUI.SetActive(true);
+                levelFail = false;
             }
         }
 
@@ -72,7 +90,7 @@ public class GameControl : MonoBehaviour
             pictures[2].rotation.z == 0 &&
             pictures[3].rotation.z == 0)
         {
-            //youWin = true;
+            rotateWin.SetActive(true);
             rotatePuzzle = true;
         }     
 
@@ -108,4 +126,5 @@ public class GameControl : MonoBehaviour
        
 
     }
+
 }
