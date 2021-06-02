@@ -8,6 +8,10 @@ public class ImageLoad : MonoBehaviour
     public GameObject dragDrop;
     public GameObject keypad;
 
+    public GameObject rotatebutton;
+    public GameObject dragButton;
+    public GameObject keypadButton;
+
     public void OpenRotatePuzzle()
     {
         if (rotatePuzzle != null)
@@ -15,6 +19,7 @@ public class ImageLoad : MonoBehaviour
             bool isActive = rotatePuzzle.activeSelf;
 
             rotatePuzzle.SetActive(!isActive);
+            //dragButton.SetActive(!isActive);
         }
     }
 
