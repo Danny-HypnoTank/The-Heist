@@ -12,6 +12,8 @@ public class ButtonPress : MonoBehaviour {
 
     public static string didclick = "n";
 
+    public static bool hasKey = false;
+
     [SerializeField]
     private Timer gameManager;
 
@@ -25,7 +27,8 @@ public class ButtonPress : MonoBehaviour {
             if (playerCode==correctCode)
             {
                 Debug.Log("Correct!");
-                gameManager.levelComplete = true;
+                //gameManager.levelComplete = true;
+                hasKey = true;
             }
             else
             {
