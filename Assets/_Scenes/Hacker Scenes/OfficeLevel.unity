@@ -1855,6 +1855,9 @@ MonoBehaviour:
   rotatePuzzle: {fileID: 1520104195}
   dragDrop: {fileID: 796309937}
   keypad: {fileID: 987039439}
+  rotatebutton: {fileID: 0}
+  dragButton: {fileID: 0}
+  keypadButton: {fileID: 0}
 --- !u!1 &870597956
 GameObject:
   m_ObjectHideFlags: 0
@@ -3033,7 +3036,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -758, y: 382}
+  m_AnchoredPosition: {x: -647, y: 342}
   m_SizeDelta: {x: 215.145, y: 107.2145}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1188462087
@@ -3338,6 +3341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Key: {fileID: 0}
+  winScreen: {fileID: 1373009297}
 --- !u!1 &1287769846
 GameObject:
   m_ObjectHideFlags: 0
@@ -4853,6 +4857,9 @@ MonoBehaviour:
   rotatePuzzle: {fileID: 1520104195}
   dragDrop: {fileID: 796309937}
   keypad: {fileID: 987039439}
+  rotatebutton: {fileID: 0}
+  dragButton: {fileID: 0}
+  keypadButton: {fileID: 0}
 --- !u!114 &1638120143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5150,7 +5157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 678.0012, y: 269}
+  m_AnchoredPosition: {x: 617, y: 214.51}
   m_SizeDelta: {x: 154.0026, y: 208.4219}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1721991854
@@ -5199,7 +5206,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1721991858}
         m_TargetAssemblyTypeName: ImageLoad, Assembly-CSharp
-        m_MethodName: OpenPuzzle
+        m_MethodName: OpenRotatePuzzle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5262,6 +5269,9 @@ MonoBehaviour:
   rotatePuzzle: {fileID: 1520104195}
   dragDrop: {fileID: 796309937}
   keypad: {fileID: 987039439}
+  rotatebutton: {fileID: 1721991852}
+  dragButton: {fileID: 803394096}
+  keypadButton: {fileID: 1638120140}
 --- !u!1 &1728307958
 GameObject:
   m_ObjectHideFlags: 0
@@ -5468,9 +5478,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1758814727}
         m_TargetAssemblyTypeName: LoadLevel, Assembly-CSharp
-        m_MethodName: playGame
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
