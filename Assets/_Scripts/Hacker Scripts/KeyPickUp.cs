@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class KeyPickUp : MonoBehaviour
 {
-    [HideInInspector]
+
     public bool hasKey = false;
     private void OnMouseDown()
     {

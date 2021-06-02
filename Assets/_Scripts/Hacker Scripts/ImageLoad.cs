@@ -7,19 +7,34 @@ public class ImageLoad : MonoBehaviour
     public GameObject rotatePuzzle;
     public GameObject dragDrop;
     public GameObject keypad;
-  
-    void Start()
+
+    public void OpenRotatePuzzle()
     {
-        rotatePuzzle.SetActive(false);
-        dragDrop.SetActive(false);
-        keypad.SetActive(false);
+        if (rotatePuzzle != null)
+        {
+            bool isActive = rotatePuzzle.activeSelf;
+
+            rotatePuzzle.SetActive(!isActive);
+        }
     }
 
-
-    private void OnMouseDown()
+    public void OpenDragPuzzle()
     {
-        rotatePuzzle.SetActive(true);
-        dragDrop.SetActive(true);
-        keypad.SetActive(true);
+        if (dragDrop != null)
+        {
+            bool isActive = dragDrop.activeSelf;
+
+            dragDrop.SetActive(!isActive);
+        }
+    }
+
+    public void OpenKeypad ()
+    {
+        if (keypad != null)
+        {
+            bool isActive = keypad.activeSelf;
+
+            keypad.SetActive(!isActive);
+        }
     }
 }
