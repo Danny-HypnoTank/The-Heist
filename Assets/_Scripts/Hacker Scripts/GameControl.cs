@@ -27,7 +27,7 @@ public class GameControl : MonoBehaviour
     private GameObject timerOBJ;
 
     public bool levelFail = false;
-
+    private bool dragDropComplete = false;
 
     public static bool youWin;
 
@@ -40,17 +40,16 @@ public class GameControl : MonoBehaviour
     private int moneyGainedStage1 = 30;
     private int moneyGainedStage2 = 20;
     private int moneyGainedStage3 = 10;
-
     
     public GameObject rotatebutton;
     public GameObject dragButton;
     public GameObject keypadButton;
+    public GameObject dragDropPuzzle;
 
     public GameObject rotateWin;
     public GameObject dragDropWin;
     //public GameObject keypadWin;
     public GameObject puzzleButtons;
-
 
     // Start is called before the first frame update
     void Start()
@@ -122,8 +121,18 @@ public class GameControl : MonoBehaviour
                 PlayerPrefs.Save();
             }
         }
-        
-       
+
+
+        if (correctMovements == 5)
+        {
+            dragDropComplete = true;
+            dragDropWin.SetActive(true);
+            dragDropPuzzle.SetActive(false);
+
+
+        }
+
+
 
     }
 

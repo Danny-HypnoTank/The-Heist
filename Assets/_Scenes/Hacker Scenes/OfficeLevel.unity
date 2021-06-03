@@ -1132,7 +1132,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &284025054
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1486,6 +1486,7 @@ GameObject:
   - component: {fileID: 397394994}
   - component: {fileID: 397394993}
   - component: {fileID: 397394992}
+  - component: {fileID: 397394995}
   m_Layer: 5
   m_Name: Continue
   m_TagString: Untagged
@@ -1557,9 +1558,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 397394990}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: 
+      - m_Target: {fileID: 397394995}
+        m_TargetAssemblyTypeName: CloseUI, Assembly-CSharp
+        m_MethodName: closeUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1607,6 +1608,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 397394990}
   m_CullTransparentMesh: 1
+--- !u!114 &397394995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397394990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1d2e0c3364215f45b4b58460d57afe1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winUI: {fileID: 1383862130}
+  puzzle: {fileID: 796309937}
 --- !u!1 &520363862
 GameObject:
   m_ObjectHideFlags: 0
@@ -2584,7 +2599,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 426.26538, y: -131.83823}
+  m_AnchoredPosition: {x: 373, y: -127}
   m_SizeDelta: {x: 254.3745, y: 160.6373}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &803394098
@@ -5238,7 +5253,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1383862131
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6205,8 +6220,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1608161744}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.119947866, y: 0.27570337, z: 0.5307342}
-  m_LocalScale: {x: 3.1395433, y: 3.1783922, z: 1}
+  m_LocalPosition: {x: 0.1403, y: 0.2689, z: 0.5307342}
+  m_LocalScale: {x: 2.7856207, y: 3.182721, z: 1}
   m_Children: []
   m_Father: {fileID: 1711131091}
   m_RootOrder: 0
@@ -6650,7 +6665,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 607.2654, y: 162.99046}
+  m_AnchoredPosition: {x: 579, y: 193}
   m_SizeDelta: {x: 154.0026, y: 208.4219}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1721991854
@@ -7189,9 +7204,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1785045385}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: 
+      - m_Target: {fileID: 1785045390}
+        m_TargetAssemblyTypeName: CloseUI, Assembly-CSharp
+        m_MethodName: closeUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8233,6 +8248,7 @@ MonoBehaviour:
   rotatebutton: {fileID: 1721991852}
   dragButton: {fileID: 803394096}
   keypadButton: {fileID: 1638120140}
+  dragDropPuzzle: {fileID: 796309937}
   rotateWin: {fileID: 149399312}
   dragDropWin: {fileID: 1383862130}
   puzzleButtons: {fileID: 1706626959}
