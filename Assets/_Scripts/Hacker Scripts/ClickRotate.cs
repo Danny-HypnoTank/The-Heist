@@ -6,7 +6,7 @@ public class ClickRotate : MonoBehaviour
 {
     private void OnMouseDown()
     {
-        if (!GameControl.youWin)
+        if (!PuzzleManager.puzzleComplete)
             transform.Rotate(0f, 0f, 90f);
     }
 }

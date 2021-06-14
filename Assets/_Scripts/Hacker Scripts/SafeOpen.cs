@@ -6,19 +6,21 @@ public class SafeOpen : MonoBehaviour
 {
 
     public ButtonPress Key;
-    public GameObject winScreen;
+    
+    public Sprite safeOpen, safeClose;
 
     private void Start()
     {
         Key = FindObjectOfType<ButtonPress>();
-        winScreen.gameObject.SetActive(false);
+        
     }
     private void OnMouseDown()
     {
-       if (ButtonPress.hasKey == true)
+       if (PuzzleManager.gotKey == true)
         {
             Debug.Log("safe open");
-            winScreen.gameObject.SetActive(true);
+            //winScreen.gameObject.SetActive(true);
+            GetComponent<SpriteRenderer>().sprite = safeOpen;
         }
     }
 
