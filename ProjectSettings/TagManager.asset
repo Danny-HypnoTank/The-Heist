@@ -11,7 +11,12 @@ TagManager:
   - Wall
   - Roads
   - Detector
+<<<<<<< Updated upstream
   - Puzzle
+=======
+  - Boundary
+  - Bullet
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
