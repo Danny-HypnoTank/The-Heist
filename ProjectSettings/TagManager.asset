@@ -11,6 +11,7 @@ TagManager:
   - Wall
   - Roads
   - Detector
+  - Puzzle
   layers:
   - Default
   - TransparentFX
