@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fe7cd51d8d4c2eb438087e818f956704
+guid: 326edd73ac352ed419bc7d4563bfd7bd
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Myfont
+  - Heist Font
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
