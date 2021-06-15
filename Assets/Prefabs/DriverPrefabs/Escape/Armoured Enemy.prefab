@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4854602590032631505}
   - component: {fileID: 6649759763024525023}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Armoured Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7869986391193632487, guid: 445100dbcfe86744dac1d5498569cd25, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.7712728, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

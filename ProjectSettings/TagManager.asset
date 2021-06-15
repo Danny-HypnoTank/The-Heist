@@ -3,15 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - DropOffPoint
-  - PickUpPoint
-  - Exit
-  - Enemy
-  - Wall
-  - Roads
-  - Detector
-  - Puzzle
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -48,10 +40,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: IconBlack
-    uniqueID: 4018721563
-    locked: 0
-  - name: Icon
-    uniqueID: 4189280757
     locked: 0

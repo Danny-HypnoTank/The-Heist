@@ -14,9 +14,21 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D playerRB;
     [SerializeField]
     private float speed;
+    [SerializeField]
+    private int playerHealth;
+
+    [SerializeField]
+    private float fireRate;
+    private float nextFire;
+    [SerializeField]
+    private GameObject bullet;
+    [SerializeField]
+    private Transform shotSpawn;
 
     [SerializeField]
     private Boundary boundary;
+    [SerializeField]
+    private GameController gameController;
 
     private void Start()
     {
@@ -40,6 +52,29 @@ public class PlayerController : MonoBehaviour
 
     private void Update() //Player Shooting
     {
-        
+        if (Input.GetButton("Fire1") && Time.time > nextFire)
+        {
+            nextFire = Time.time + fireRate;
+            Instantiate(bullet, shotSpawn.position, shotSpawn.rotation);
+        }
+
+        if (playerHealth <= 0)
+        {
+            gameController.Gameover = true;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            playerHealth--;
+            Destroy(other.gameObject);
+        }
+        else if (other.CompareTag("Bullet"))
+        {
+            playerHealth--;
+            Destroy(other.gameObject);
+        }
     }
 }
