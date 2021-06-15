@@ -23,7 +23,7 @@ public class PuzzleManager : MonoBehaviour
         winText.SetActive(false);
         puzzleComplete = false;
         gotKey = false;
-        Key.SetActive(true);
+        Key.SetActive(false);
         
     }
 
@@ -37,7 +37,7 @@ public class PuzzleManager : MonoBehaviour
             pictures[4].rotation.z == 0 &&
             pictures[5].rotation.z == 0)
         {
-            gotKey = true;
+            //gotKey = true;
             puzzleComplete = true;
             puzzle[0].SetActive(false);
             puzzle[1].SetActive(false);
@@ -45,7 +45,7 @@ public class PuzzleManager : MonoBehaviour
             puzzle[3].SetActive(false);
             puzzle[4].SetActive(false);
             puzzle[5].SetActive(false);
-           // Key.SetActive(true);
+            Key.SetActive(true);
         }
     }
 }
