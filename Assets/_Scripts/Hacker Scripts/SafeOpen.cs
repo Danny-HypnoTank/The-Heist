@@ -8,10 +8,12 @@ public class SafeOpen : MonoBehaviour
     public ButtonPress Key;
     
     public Sprite safeOpen, safeClose;
+    public static bool isOpen;
 
     private void Start()
     {
         Key = FindObjectOfType<ButtonPress>();
+        isOpen = false;
         
     }
     private void OnMouseDown()
@@ -21,6 +23,7 @@ public class SafeOpen : MonoBehaviour
             Debug.Log("safe open");
             //winScreen.gameObject.SetActive(true);
             GetComponent<SpriteRenderer>().sprite = safeOpen;
+            isOpen = true;
         }
     }
 
