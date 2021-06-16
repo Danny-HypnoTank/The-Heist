@@ -14,14 +14,19 @@ public class DialogueManager : MonoBehaviour
 
     private Queue<string> sentences;
 
+    public GameObject background;
+
     void Start()
     {
         sentences = new Queue<string>();
+        background.SetActive(false);
     }
 
     public void StartDialogue (Dialogue dialogue)
     {
         animator.SetBool("IsOpen", true);
+
+        background.SetActive(true);
 
         nameText.text = dialogue.name;
 
@@ -61,6 +66,7 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue ()
     {
         animator.SetBool("IsOpen", false);
+        background.SetActive(false);
     }
 
 }
