@@ -49627,6 +49627,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Square
       objectReference: {fileID: 0}
+    - target: {fileID: 5769516321601848588, guid: 90206ecfb04fc7640808864010177643, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 5769516321601848592, guid: 90206ecfb04fc7640808864010177643, type: 3}
       propertyPath: m_RootOrder
       value: 7
