@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 4854602590032631504}
   - component: {fileID: 4854602590032631505}
   - component: {fileID: 6649759763024525023}
+  - component: {fileID: 1098096989797877098}
   m_Layer: 0
   m_Name: Armoured Enemy
-  m_TagString: Enemy
+  m_TagString: AEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -189,6 +190,19 @@ MonoBehaviour:
   firePoint: {fileID: 8813062358222193046}
   fireRate: 1.5
   shotDelay: 0.5
+--- !u!114 &1098096989797877098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4854602590032631511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08ddf0238cdd5e34a893ad59a210a578, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 2
 --- !u!1 &8143730144448710044
 GameObject:
   m_ObjectHideFlags: 0

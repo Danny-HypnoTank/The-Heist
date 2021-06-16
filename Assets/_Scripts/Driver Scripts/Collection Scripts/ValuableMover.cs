@@ -28,33 +28,45 @@ public class ValuableMover : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        canvasGroup.alpha = .6f;
-        canvasGroup.blocksRaycasts = false;
+        if (collectionController.LevelOver != true)
+        {
+            canvasGroup.alpha = .6f;
+            canvasGroup.blocksRaycasts = false;
 
-        if (isInSlot == true)
-        {
-            collectionController.Score = collectionController.Score - value;
-            isInSlot = false;
-        }
-        else
-        {
-            isInSlot = false;
+            if (isInSlot == true)
+            {
+                collectionController.Score = collectionController.Score - value;
+                isInSlot = false;
+            }
+            else
+            {
+                isInSlot = false;
+            }
         }
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        if (collectionController.LevelOver != true)
+        {
+            rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        canvasGroup.alpha = 1f;
-        canvasGroup.blocksRaycasts = true;
+        if (collectionController.LevelOver != true)
+        {
+            canvasGroup.alpha = 1f;
+            canvasGroup.blocksRaycasts = true;
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("OnPointerDown");
+        if (collectionController.LevelOver != true)
+        {
+            Debug.Log("OnPointerDown");
+        }
     }
 }

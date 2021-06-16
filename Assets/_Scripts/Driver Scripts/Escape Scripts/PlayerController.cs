@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class Boundary
@@ -30,9 +31,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameController gameController;
 
+    [SerializeField]
+    private Slider healthSlider;
+
     private void Start()
     {
-        
+        healthSlider.value = playerHealth;
     }
 
     private void FixedUpdate() //Player Movement
@@ -48,6 +52,7 @@ public class PlayerController : MonoBehaviour
             Mathf.Clamp(playerRB.position.y, boundary.yMin, boundary.yMax),
             0.0f
         );
+        healthSlider.value = playerHealth;
     }
 
     private void Update() //Player Shooting
@@ -75,6 +80,10 @@ public class PlayerController : MonoBehaviour
         {
             playerHealth--;
             Destroy(other.gameObject);
+        }
+        else if (other.CompareTag("Money"))
+        {
+            gameController.Score += gameController.Score + 10;
         }
     }
 }

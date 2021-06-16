@@ -11,5 +11,9 @@ public class DestroyByContact : MonoBehaviour
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
+        if (other.CompareTag("AEnemy"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -38,10 +38,15 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private int distance;
 
+    private int score;
+    [SerializeField]
+    private Text scoreText;
+
     private bool gameover = false;
     private bool victory = false;
 
     public bool Gameover { get => gameover; set => gameover = value; }
+    public int Score { get => score; set => score = value; }
 
     private void Start()
     {
