@@ -16,6 +16,7 @@ TagManager:
   - AEnemy
   - PBullet
   - Money
+  - Obstacle
   layers:
   - Default
   - TransparentFX

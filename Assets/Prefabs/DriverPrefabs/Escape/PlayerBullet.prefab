@@ -159,3 +159,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47eedba7b2667f3458533dd9883a25a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moneyOBJ: {fileID: 908660839286551287, guid: f999916550e30ba40929bc8e036986f9, type: 3}
+  explosion: {fileID: 100012, guid: 007dc18f4ce4a9547b3eeb309889fef9, type: 3}

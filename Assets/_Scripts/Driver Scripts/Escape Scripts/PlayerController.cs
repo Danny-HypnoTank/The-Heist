@@ -34,6 +34,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Slider healthSlider;
 
+    [SerializeField]
+    private GameObject explosion;
+
     private void Start()
     {
         healthSlider.value = playerHealth;
@@ -65,6 +68,10 @@ public class PlayerController : MonoBehaviour
 
         if (playerHealth <= 0)
         {
+            if (explosion != null)
+            {
+                Instantiate(explosion, transform.position, transform.rotation);
+            }
             gameController.Gameover = true;
         }
     }
@@ -76,14 +83,30 @@ public class PlayerController : MonoBehaviour
             playerHealth--;
             Destroy(other.gameObject);
         }
+        else if (other.CompareTag("AEnemy"))
+        {
+            playerHealth--;
+            Destroy(other.gameObject);
+        }
+        else if (other.CompareTag("Obstacle"))
+        {
+
+            playerHealth--;
+            Destroy(other.gameObject);
+        }
         else if (other.CompareTag("Bullet"))
         {
+            if (explosion != null)
+            {
+                Instantiate(explosion, other.transform.position, other.transform.rotation);
+            }
             playerHealth--;
             Destroy(other.gameObject);
         }
         else if (other.CompareTag("Money"))
         {
-            gameController.Score += gameController.Score + 10;
+            gameController.Score = gameController.Score + 10;
+            Destroy(other.gameObject);
         }
     }
 }

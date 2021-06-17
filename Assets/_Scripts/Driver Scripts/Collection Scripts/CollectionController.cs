@@ -20,9 +20,11 @@ public class CollectionController : MonoBehaviour
     [SerializeField]
     private GameObject scoreOBJ;
     private bool levelOver;
-
+    private bool levelStart = false;
     [SerializeField]
     private GameObject completionUI;
+    [SerializeField]
+    private GameObject startUI;
 
     private int score;
 
@@ -31,35 +33,52 @@ public class CollectionController : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 0;
+        startUI.SetActive(true);
+        timerOBJ.SetActive(false);
+        objectiveOBJ.SetActive(false);
+        scoreOBJ.SetActive(false);
+        levelOver = false;
+        levelStart = false;
+    }
+
+    public void StartLevel()
+    {
+        startUI.SetActive(false);
         timerOBJ.SetActive(true);
-        objectiveOBJ.SetActive(true);
+        objectiveOBJ.SetActive(false);
         scoreOBJ.SetActive(true);
         levelOver = false;
+        Time.timeScale = 1;
+        levelStart = true;
     }
 
     private void Update()
     {
-        scoreText.text = "$: " + score;
-        if(levelOver != true)
+        if (levelStart == true)
         {
-            if (timeRemaining > 0)
+            scoreText.text = "$: " + score;
+            if (levelOver != true)
             {
-                timeRemaining -= Time.deltaTime;
+                if (timeRemaining > 0)
+                {
+                    timeRemaining -= Time.deltaTime;
+                }
+                timerText.text = timeRemaining.ToString("00");
+                if (timeRemaining <= 0)
+                {
+                    levelOver = true;
+                }
             }
-            timerText.text = timeRemaining.ToString("00");
-            if (timeRemaining <= 0)
-            {
-                levelOver = true;
-            }
-        }
 
-        if (levelOver == true)
-        {
-            timerOBJ.SetActive(false);
-            objectiveOBJ.SetActive(false);
-            scoreOBJ.SetActive(false);
-            completionUI.SetActive(true);
-            overallTakeText.text = "Overall Take.....$" + score;
+            if (levelOver == true)
+            {
+                timerOBJ.SetActive(false);
+                objectiveOBJ.SetActive(false);
+                scoreOBJ.SetActive(false);
+                completionUI.SetActive(true);
+                overallTakeText.text = "Overall Take.....$" + score;
+            }
         }
     }
 

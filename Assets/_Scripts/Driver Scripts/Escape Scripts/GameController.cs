@@ -38,6 +38,13 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private int distance;
 
+    [SerializeField]
+    private GameObject startUI;
+    [SerializeField]
+    private GameObject loseUI;
+    [SerializeField]
+    private GameObject winUI;
+
     private int score;
     [SerializeField]
     private Text scoreText;
@@ -50,6 +57,17 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 0;
+        startUI.SetActive(true);
+        loseUI.SetActive(false);
+        winUI.SetActive(false);
+    }
+
+
+    public void StartLevel()
+    {
+        Time.timeScale = 1;
+        startUI.SetActive(false);
         StartCoroutine(SpawnWaves());
         StartCoroutine(SpawnSideWaves());
         StartCoroutine(DistanceCounter());
@@ -57,6 +75,7 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
+        scoreText.text = "$: " + score;
         if(distance >= 10)
         {
             victory = true;
@@ -148,12 +167,14 @@ public class GameController : MonoBehaviour
         //Check for lose condition
         if (gameover == true)
         {
+            loseUI.SetActive(true);
             Time.timeScale = 0;
         }
 
         //Check for win condition
         if (victory == true)
         {
+            winUI.SetActive(true);
             Time.timeScale = 0;
         }
     }
