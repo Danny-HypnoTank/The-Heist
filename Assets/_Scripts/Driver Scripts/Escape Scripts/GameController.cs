@@ -54,6 +54,7 @@ public class GameController : MonoBehaviour
 
     public bool Gameover { get => gameover; set => gameover = value; }
     public int Score { get => score; set => score = value; }
+    public bool Victory { get => victory; set => victory = value; }
 
     private void Start()
     {

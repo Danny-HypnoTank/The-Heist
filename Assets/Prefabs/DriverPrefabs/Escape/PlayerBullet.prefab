@@ -161,3 +161,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moneyOBJ: {fileID: 908660839286551287, guid: f999916550e30ba40929bc8e036986f9, type: 3}
   explosion: {fileID: 100012, guid: 007dc18f4ce4a9547b3eeb309889fef9, type: 3}
+  shakeController: {fileID: 0}
