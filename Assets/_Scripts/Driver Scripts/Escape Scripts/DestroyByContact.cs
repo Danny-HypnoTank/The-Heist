@@ -11,6 +11,9 @@ public class DestroyByContact : MonoBehaviour
     [SerializeField]
     private GameObject explosion;
 
+    [SerializeField]
+    private ScreenShakeController shakeController;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
@@ -25,6 +28,7 @@ public class DestroyByContact : MonoBehaviour
             {
                 Instantiate(explosion, transform.position, transform.rotation);
             }
+            //Shake Screen
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
@@ -34,6 +38,7 @@ public class DestroyByContact : MonoBehaviour
             {
                 Instantiate(explosion, transform.position, transform.rotation);
             }
+            //Shake Screen
             Destroy(gameObject);
         }
     }

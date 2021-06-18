@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
     private Boundary boundary;
     [SerializeField]
     private GameController gameController;
+    [SerializeField]
+    private ScreenShakeController shakeController;
 
     [SerializeField]
     private Slider healthSlider;
@@ -81,17 +83,26 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             playerHealth--;
+            //Play anim
+            //shake camera
+            //Slow time
             Destroy(other.gameObject);
         }
         else if (other.CompareTag("AEnemy"))
         {
             playerHealth--;
+            //Play anim
+            //shake camera
+            //Slow time
             Destroy(other.gameObject);
         }
         else if (other.CompareTag("Obstacle"))
         {
 
             playerHealth--;
+            //Play anim
+            //shake camera
+            //Slow time
             Destroy(other.gameObject);
         }
         else if (other.CompareTag("Bullet"))
@@ -101,6 +112,9 @@ public class PlayerController : MonoBehaviour
                 Instantiate(explosion, other.transform.position, other.transform.rotation);
             }
             playerHealth--;
+            //Play anim
+            //shake camera
+
             Destroy(other.gameObject);
         }
         else if (other.CompareTag("Money"))

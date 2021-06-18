@@ -39,6 +39,7 @@ public class PuzzleManager : MonoBehaviour
         levelEnd.SetActive(false);
         loseScreen.SetActive(false);
         Graffiti.SetActive(false);
+        squidMonster = true;
         //background.SetActive(false);
 
     }
@@ -61,17 +62,14 @@ public class PuzzleManager : MonoBehaviour
             pictures[2].rotation.z == 0 &&
             pictures[3].rotation.z == 0 &&
             pictures[4].rotation.z == 0 &&
-            pictures[5].rotation.z == 0)
+            pictures[5].rotation.z == 0 && squidMonster == true)
             
         {
             puzzleComplete = true;
 
-            if (squidMonster == true)
-            {
-                StartCoroutine(Wait());
+            StartCoroutine(Wait());
 
-                Key.SetActive(true);
-            }
+            Key.SetActive(true);
 
         }
 
