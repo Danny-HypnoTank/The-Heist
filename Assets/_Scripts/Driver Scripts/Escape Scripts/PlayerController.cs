@@ -16,6 +16,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float speed;
     [SerializeField]
+    private int boostCount;
+    private bool boosting = false;
+    private int slowTimeCount = 1;
+
+    [SerializeField]
     private int playerHealth;
 
     [SerializeField]
@@ -31,7 +36,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameController gameController;
     [SerializeField]
-    private ScreenShakeController shakeController;
+    private ShakeController shakeController;
 
     [SerializeField]
     private Slider healthSlider;
@@ -62,65 +67,154 @@ public class PlayerController : MonoBehaviour
 
     private void Update() //Player Shooting
     {
-        if (Input.GetButton("Fire1") && Time.time > nextFire)
+        if (gameController.Gameover == false && gameController.Victory == false)
         {
-            nextFire = Time.time + fireRate;
-            Instantiate(bullet, shotSpawn.position, shotSpawn.rotation);
-        }
-
-        if (playerHealth <= 0)
-        {
-            if (explosion != null)
+            if (Input.GetButton("Fire1") && Time.time > nextFire)
             {
-                Instantiate(explosion, transform.position, transform.rotation);
+                nextFire = Time.time + fireRate;
+                Instantiate(bullet, shotSpawn.position, shotSpawn.rotation);
             }
-            gameController.Gameover = true;
+
+            if (playerHealth <= 0)
+            {
+                if (explosion != null)
+                {
+                    Instantiate(explosion, transform.position, transform.rotation);
+                }
+                gameController.Gameover = true;
+            }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy"))
+        if (gameController.Gameover == false && gameController.Victory == false)
         {
-            playerHealth--;
-            //Play anim
-            //shake camera
-            //Slow time
-            Destroy(other.gameObject);
-        }
-        else if (other.CompareTag("AEnemy"))
-        {
-            playerHealth--;
-            //Play anim
-            //shake camera
-            //Slow time
-            Destroy(other.gameObject);
-        }
-        else if (other.CompareTag("Obstacle"))
-        {
-
-            playerHealth--;
-            //Play anim
-            //shake camera
-            //Slow time
-            Destroy(other.gameObject);
-        }
-        else if (other.CompareTag("Bullet"))
-        {
-            if (explosion != null)
+            if (boosting == true)
             {
-                Instantiate(explosion, other.transform.position, other.transform.rotation);
+                if (other.CompareTag("Enemy"))
+                {
+                    //shake camera
+                    StartCoroutine(shakeController.Shake(.15f, .4f));
+                    //Slow time
+                    Destroy(other.gameObject);
+                }
+                else if (other.CompareTag("AEnemy"))
+                {
+                    //shake camera
+                    StartCoroutine(shakeController.Shake(.15f, .4f));
+                    //Slow time
+                    Destroy(other.gameObject);
+                }
+                else if (other.CompareTag("Obstacle"))
+                {
+                    //shake camera
+                    StartCoroutine(shakeController.Shake(.15f, .4f));
+                    //Slow time
+                    Destroy(other.gameObject);
+                }
+                else if (other.CompareTag("Bullet"))
+                {
+                    if (explosion != null)
+                    {
+                        Instantiate(explosion, other.transform.position, other.transform.rotation);
+                    }
+                    //shake camera
+                    StartCoroutine(shakeController.Shake(.15f, .4f));
+                    Destroy(other.gameObject);
+                }
+                else if (other.CompareTag("Money"))
+                {
+                    gameController.Score = gameController.Score + 10;
+                    Destroy(other.gameObject);
+                }
             }
-            playerHealth--;
-            //Play anim
-            //shake camera
+            else
+            {
+                if (other.CompareTag("Enemy"))
+                {
+                    playerHealth--;
+                    //Play anim
+                    //shake camera
+                    StartCoroutine(shakeController.Shake(.15f, .4f));
+                    //Slow time
+                    Destroy(other.gameObject);
+                }
+                else if (other.CompareTag("AEnemy"))
+                {
+                    playerHealth--;
+                    //Play anim
+                    //shake camera
+                    StartCoroutine(shakeController.Shake(.15f, .4f));
+                    //Slow time
+                    Destroy(other.gameObject);
+                }
+                else if (other.CompareTag("Obstacle"))
+                {
 
-            Destroy(other.gameObject);
-        }
-        else if (other.CompareTag("Money"))
+                    playerHealth--;
+                    //Play anim
+                    //shake camera
+                    StartCoroutine(shakeController.Shake(.15f, .4f));
+                    //Slow time
+                    Destroy(other.gameObject);
+                }
+                else if (other.CompareTag("Bullet"))
+                {
+                    if (explosion != null)
+                    {
+                        Instantiate(explosion, other.transform.position, other.transform.rotation);
+                    }
+                    playerHealth--;
+                    //Play anim
+                    //shake camera
+                    StartCoroutine(shakeController.Shake(.15f, .4f));
+                    Destroy(other.gameObject);
+                }
+                else if (other.CompareTag("Money"))
+                {
+                    gameController.Score = gameController.Score + 10;
+                    Destroy(other.gameObject);
+                }
+            }
+        }     
+    }
+
+    public void BoostButton()
+    {
+        //Change player speed
+        //If charges 
+        if (boostCount > 0 && boosting == false)
         {
-            gameController.Score = gameController.Score + 10;
-            Destroy(other.gameObject);
+            StartCoroutine(IncreaseSpeed());
         }
+
+    }
+
+    IEnumerator IncreaseSpeed()
+    {
+        boosting = true;
+        boostCount--;
+        speed = speed * 2;
+        yield return new WaitForSeconds(3);
+        speed = speed / 2;
+        boosting = false;
+    }
+
+    public void SlowTimeButton()
+    {
+        if (slowTimeCount > 0)
+        {
+            //Slow Time
+            //only be able to do once
+            StartCoroutine(SlowTime());
+        }
+
+    }
+
+    IEnumerator SlowTime()
+    {
+        slowTimeCount--;
+        yield return new WaitForSeconds(3);
     }
 }
