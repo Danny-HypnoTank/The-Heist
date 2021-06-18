@@ -20,7 +20,9 @@ public class PuzzleManager : MonoBehaviour
 
     public GameObject levelEnd;
     public GameObject loseScreen;
-    //public GameObject background;
+    public GameObject Graffiti;
+
+    private bool squidMonster;
 
     public float currentTime = 0f;
     public float startingTime = 10f;
@@ -36,12 +38,13 @@ public class PuzzleManager : MonoBehaviour
         Key.SetActive(false);
         levelEnd.SetActive(false);
         loseScreen.SetActive(false);
+        Graffiti.SetActive(false);
         //background.SetActive(false);
-        
+
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         currentTime -= 1*  Time.deltaTime;
         countdownText.text = currentTime.ToString("0");
@@ -59,23 +62,43 @@ public class PuzzleManager : MonoBehaviour
             pictures[3].rotation.z == 0 &&
             pictures[4].rotation.z == 0 &&
             pictures[5].rotation.z == 0)
+            
         {
-            //gotKey = true;
             puzzleComplete = true;
-            puzzle[0].SetActive(false);
-            puzzle[1].SetActive(false);
-            puzzle[2].SetActive(false);
-            puzzle[3].SetActive(false);
-            puzzle[4].SetActive(false);
-            puzzle[5].SetActive(false);
-            Key.SetActive(true);
+
+            if (squidMonster == true)
+            {
+                StartCoroutine(Wait());
+
+                Key.SetActive(true);
+            }
+
         }
 
         if (SafeOpen.isOpen == true)
         {
             levelEnd.SetActive(true);
-            
-        }
+           
+        }  
        
+    }
+    IEnumerator Wait()
+    {
+        squidMonster = false;
+        yield return new WaitForSeconds(1f);
+        Graffiti.SetActive(true);
+
+        yield return new WaitForSeconds(3f);
+        puzzle[0].SetActive(false);
+        puzzle[1].SetActive(false);
+        puzzle[2].SetActive(false);
+        puzzle[3].SetActive(false);
+        puzzle[4].SetActive(false);
+        puzzle[5].SetActive(false);
+
+        Graffiti.SetActive(false);
+
+        yield return null;
+
     }
 }
