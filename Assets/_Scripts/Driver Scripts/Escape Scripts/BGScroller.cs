@@ -3,8 +3,11 @@ using UnityEngine;
 
 public class BGScroller : MonoBehaviour
 {
-    public float scrollSpeed;
+    [SerializeField]
+    private float scrollSpeed;
     private Vector3 startPosition;
+
+    public float ScrollSpeed { get => scrollSpeed; set => scrollSpeed = value; }
 
     void Start()
     {
@@ -15,7 +18,7 @@ public class BGScroller : MonoBehaviour
     {
         transform.Translate(translation: Vector3.down * scrollSpeed * Time.deltaTime);
 
-        if (transform.position.y < -20.79783f)
+        if (transform.position.y < -59.33f)
         {
             transform.position = startPosition;
         }

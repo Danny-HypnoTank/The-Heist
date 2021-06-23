@@ -18,7 +18,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private int boostCount;
     private bool boosting = false;
+    private bool slowTime = false;
     private int slowTimeCount = 1;
+    [SerializeField]
+    private Image boostButton;
+    [SerializeField]
+    private Image slowButton;
 
     [SerializeField]
     private int playerHealth;
@@ -31,18 +36,24 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Transform shotSpawn;
 
+
     [SerializeField]
     private Boundary boundary;
     [SerializeField]
     private GameController gameController;
     [SerializeField]
     private ShakeController shakeController;
+    [SerializeField]
+    private BGScroller bgscroll;
 
     [SerializeField]
     private Slider healthSlider;
 
     [SerializeField]
     private GameObject explosion;
+
+    [SerializeField]
+    private Animator muzzleAnimator;
 
     private void Start()
     {
@@ -72,7 +83,9 @@ public class PlayerController : MonoBehaviour
             if (Input.GetButton("Fire1") && Time.time > nextFire)
             {
                 nextFire = Time.time + fireRate;
+                muzzleAnimator.SetBool("Shooting", true);
                 Instantiate(bullet, shotSpawn.position, shotSpawn.rotation);
+                StartCoroutine(MuzzleStop());
             }
 
             if (playerHealth <= 0)
@@ -84,6 +97,12 @@ public class PlayerController : MonoBehaviour
                 gameController.Gameover = true;
             }
         }
+    }
+
+    IEnumerator MuzzleStop()
+    {
+        yield return new WaitForSeconds(.09f);
+        muzzleAnimator.SetBool("Shooting", false);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -184,11 +203,11 @@ public class PlayerController : MonoBehaviour
     {
         //Change player speed
         //If charges 
-        if (boostCount > 0 && boosting == false)
+        if (boostCount > 0 && boosting == false && slowTime == false)
         {
+            boosting = true;
             StartCoroutine(IncreaseSpeed());
         }
-
     }
 
     IEnumerator IncreaseSpeed()
@@ -196,8 +215,10 @@ public class PlayerController : MonoBehaviour
         boosting = true;
         boostCount--;
         speed = speed * 2;
+        bgscroll.ScrollSpeed = bgscroll.ScrollSpeed * 2;
         yield return new WaitForSeconds(3);
         speed = speed / 2;
+        bgscroll.ScrollSpeed = bgscroll.ScrollSpeed / 2;
         boosting = false;
     }
 
@@ -207,6 +228,7 @@ public class PlayerController : MonoBehaviour
         {
             //Slow Time
             //only be able to do once
+            slowTime = true;
             StartCoroutine(SlowTime());
         }
 
@@ -214,7 +236,13 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator SlowTime()
     {
+        slowTime = true;
         slowTimeCount--;
-        yield return new WaitForSeconds(3);
+        Time.timeScale = 0.5f;
+        Time.fixedDeltaTime = Time.timeScale * 0.02f;
+        yield return new WaitForSeconds(2);
+        Time.timeScale = 1.0f;
+        Time.fixedDeltaTime = Time.timeScale * 0.02f;
+        slowTime = false;
     }
 }
