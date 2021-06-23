@@ -13,6 +13,9 @@ public class WeaponController : MonoBehaviour
     [SerializeField]
     private float shotDelay;
 
+    [SerializeField]
+    private Animator muzzleAnimator;
+
     private void Start()
     {
         InvokeRepeating("Fire", shotDelay, fireRate);
@@ -20,6 +23,15 @@ public class WeaponController : MonoBehaviour
 
     private void Fire()
     {
+        muzzleAnimator.SetBool("Shooting", true);
         Instantiate(bullet, firePoint.position, firePoint.rotation);
+        StartCoroutine(MuzzleStop());
     }
+
+    IEnumerator MuzzleStop()
+    {
+        yield return new WaitForSeconds(.09f);
+        muzzleAnimator.SetBool("Shooting", false);
+    }
+
 }
