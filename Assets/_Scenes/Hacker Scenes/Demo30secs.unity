@@ -5578,6 +5578,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5906724037589987203, guid: 38e4bf883a948d44c93e1aa45d153672, type: 3}
+      propertyPath: index
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5906724037589987203, guid: 38e4bf883a948d44c93e1aa45d153672, type: 3}
+      propertyPath: levelName
+      value: Collection
+      objectReference: {fileID: 0}
+    - target: {fileID: 5906724037589987203, guid: 38e4bf883a948d44c93e1aa45d153672, type: 3}
+      propertyPath: transistionTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7381438070095726757, guid: 38e4bf883a948d44c93e1aa45d153672, type: 3}
       propertyPath: m_Name
       value: LevelLoader
