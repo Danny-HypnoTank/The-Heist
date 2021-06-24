@@ -77,7 +77,7 @@ public class GameController : MonoBehaviour
     private void Update()
     {
         scoreText.text = "$: " + score;
-        if(distance >= 10)
+        if(distance >= 16)
         {
             victory = true;
         }
