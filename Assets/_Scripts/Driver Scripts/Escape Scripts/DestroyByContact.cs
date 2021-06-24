@@ -36,5 +36,13 @@ public class DestroyByContact : MonoBehaviour
             }
             Destroy(gameObject);
         }
+        if (other.CompareTag("Obstacle"))
+        {
+            if (explosion != null)
+            {
+                Instantiate(explosion, transform.position, transform.rotation);
+            }
+            Destroy(gameObject);
+        }
     }
 }
